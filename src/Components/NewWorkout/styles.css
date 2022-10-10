@@ -1,0 +1,32 @@
+.WorkoutBackgroundContainer {
+    display: flex;
+    width: 95%;
+    height: 140px;
+    background-color: white;
+    border-radius: 15px;
+    flex-direction: row;
+    padding: 1%;
+    margin-bottom: 2%;
+  }
+  .WorkoutBackgroundContainerSmall {
+    display: flex;
+    width: 45%;
+    height: 100px;
+    background-color: white;
+    border-radius: 15px;
+    flex-direction: row;
+    padding: 1%;
+    margin-bottom: 2%;
+  }
+  
+  .WorkoutInput {
+    display: flex;
+    width: 19%;
+    height: 100%;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding-left: 0.5%;
+    padding-right: 0.5%;
+  }
+  
