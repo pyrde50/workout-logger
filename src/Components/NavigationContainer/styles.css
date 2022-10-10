@@ -26,7 +26,7 @@ old way alapuolella pitää keksiä parempi jossain kohtaa TODO :root {
 
 .MainContainer {
   display: flex;
-  width: auto;
+  width: 100%;
   height: 100%;
   flex-direction: row;
 }
@@ -75,5 +75,5 @@ old way alapuolella pitää keksiä parempi jossain kohtaa TODO :root {
 }
 
 .DataContainer {
- margin: 20px;
+  margin: 20px;
 }
