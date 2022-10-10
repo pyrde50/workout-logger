@@ -82,7 +82,7 @@ const NavigationContainer = ({ children }) => {
             </div>
           </div>
         ) : null}
-        {children}
+        <div className="DataContainer">{children}</div>
       </div>
     </div>
   );

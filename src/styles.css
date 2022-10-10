@@ -1,3 +1,8 @@
 body > #root > div {
   height: 100vh;
+  font-family: "Inter";
+}
+
+h4 {
+  font-size: 16pt !important;
 }

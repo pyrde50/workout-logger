@@ -1,17 +1,15 @@
-
-old way alapuolella pitää keksiä parempi jossain kohtaa TODO
-:root {
-  --main: #70C3FF;
-  --secondary: #D6D6D6;
-  --background: #FFFFFF;
+old way alapuolella pitää keksiä parempi jossain kohtaa TODO :root {
+  --main: #70c3ff;
+  --secondary: #d6d6d6;
+  --background: #ffffff;
   --text: #000000;
-  --background2: #D6D6D650;
+  --background2: #d6d6d650;
 }
 
 .Container {
   width: 100%;
   height: 100%;
-  background-color: #D6D6D6;
+  background-color: #d6d6d6;
 }
 
 .TopBar {
@@ -23,7 +21,7 @@ old way alapuolella pitää keksiä parempi jossain kohtaa TODO
   flex-direction: row;
   justify-content: space-between;
   font-size: xx-large;
-  background-color: #FFFFFF;
+  background-color: #ffffff;
 }
 
 .MainContainer {
@@ -38,7 +36,7 @@ old way alapuolella pitää keksiä parempi jossain kohtaa TODO
   height: 100%;
   border: 3px solid #000000;
   flex-direction: column;
-  background-color: #FFFFFF;
+  background-color: #ffffff;
 }
 
 .NavigationItem {
@@ -53,7 +51,7 @@ old way alapuolella pitää keksiä parempi jossain kohtaa TODO
 .ActiveNavigationItem {
   color: #000000;
   text-decoration: none;
-  background-color: #D6D6D6;
+  background-color: #d6d6d6;
   width: 250px;
   padding-top: 20px;
   padding-bottom: 20px;
@@ -68,10 +66,14 @@ old way alapuolella pitää keksiä parempi jossain kohtaa TODO
 
 .UserIcon {
   display: flex;
-  background-color: #70C3FF;
+  background-color: #70c3ff;
   height: 50px;
   width: 50px;
   border-radius: 50px;
   justify-content: center;
   align-items: center;
+}
+
+.DataContainer {
+ margin: 20px;
 }
