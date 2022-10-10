@@ -1,0 +1,22 @@
+.Container {
+    width: '100%';
+    height: '100%';
+}
+
+.TopBar {
+    width: auto;
+    height: 50px;
+    border-color: black;
+    border-width: 2px;
+    top: 0px;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.SideNavigation {
+    width: 200px;
+    height: '100%';
+    border-color: black;
+    border-width: 2px;
+    flex-direction: column;
+}

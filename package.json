@@ -40,14 +40,19 @@
     ]
   },
   "devDependencies": {
+    "css-loader": "^6.7.1",
     "eslint": "^8.25.0",
     "eslint-plugin-react": "^7.31.9",
     "husky": "^8.0.1",
     "lint-staged": "^13.0.3",
-    "prettier": "^2.7.1"
+    "prettier": "^2.7.1",
+    "style-loader": "^3.3.1"
   },
   "lint-staged": {
-    "**/*.{js,jsx}": ["eslint . --fix", "prettier --write ."]
+    "**/*.{js,jsx}": [
+      "eslint . --fix",
+      "prettier --write ."
+    ]
   },
   "husky": {
     "hooks": {
