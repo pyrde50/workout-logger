@@ -26,8 +26,8 @@ const Server= () => <h3>What is server side?<li>node.js - JavaScript everywhere!
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>
+  <BrowserRouter>
+    <App/>
+  </BrowserRouter>
 );
 
