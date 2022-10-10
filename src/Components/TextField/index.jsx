@@ -2,7 +2,7 @@ import * as React from 'react';
 import Box from '@mui/material/Box';
 import TextField from '@mui/material/TextField';
 
-const CustomTextField = () => {
+const CustomTextField = ({ disabled, value, width }) => {
   return (
     <Box
       component="form"
@@ -12,7 +12,22 @@ const CustomTextField = () => {
       noValidate
       autoComplete="off"
     >
-      <TextField id="outlined-basic" label="Outlined" variant="outlined" />
+      {disabled ? (
+        <TextField
+          id="outlined-basic"
+          variant="outlined"
+          disabled
+          value={value}
+          style={{ width: width }}
+        />
+      ) : (
+        <TextField
+          id="outlined-basic"
+          label="Outlined"
+          variant="outlined"
+          style={{ width: width }}
+        />
+      )}
     </Box>
   );
 };

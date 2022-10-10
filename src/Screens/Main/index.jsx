@@ -7,13 +7,48 @@ import {
 } from '../../Components';
 import './styles.css';
 
-const mockData = {
-  workout: 'Bench Press',
-  reps: 10,
-  amount: 5,
-  weight: 100,
-  unit: 'KG',
-};
+const mockData = [
+  {
+    workout: 'Bench Press',
+    reps: 10,
+    amount: 5,
+    weight: 100,
+    unit: 'KG',
+    date: new Date(),
+  },
+  {
+    workout: 'Bench Press',
+    reps: 10,
+    amount: 5,
+    weight: 100,
+    unit: 'KG',
+    date: new Date(),
+  },
+  {
+    workout: 'Bench Press',
+    reps: 10,
+    amount: 5,
+    weight: 100,
+    unit: 'KG',
+    date: new Date(),
+  },
+  {
+    workout: 'Bench Press',
+    reps: 10,
+    amount: 5,
+    weight: 100,
+    unit: 'KG',
+    date: new Date(),
+  },
+  {
+    workout: 'Bench Press',
+    reps: 10,
+    amount: 5,
+    weight: 100,
+    unit: 'KG',
+    date: new Date(),
+  },
+];
 
 const Main = () => {
   return (
@@ -26,8 +61,9 @@ const Main = () => {
           onClick={() => null}
         />
         <h1>History</h1>
-        <WorkoutBackground data={mockData} />
-        <CustomTextField />
+        {mockData.map((item, index) => (
+          <WorkoutBackground data={item} key={index} />
+        ))}
       </div>
     </NavigationContainer>
   );
