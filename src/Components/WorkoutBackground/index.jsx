@@ -2,19 +2,19 @@ import React, { useState } from 'react';
 import CustomTextField from '../TextField';
 import './styles.css';
 
-const WorkoutBackground = ({ data }) => {
-  const [showLarge, setShowLarge] = useState(false);
+const WorkoutBackground = ({ data, defaultLarge }) => {
+  const [showLarge, setShowLarge] = useState(defaultLarge ? true : false);
 
   const dateString = [
     data.date.getDate(),
     data.date.getMonth() + 1,
     data.date.getFullYear(),
   ].join('.');
-  if (showLarge) {
+  if (showLarge || defaultLarge) {
     return (
       <div
         className="WorkoutBackgroundContainer"
-        onClick={() => setShowLarge(false)}
+        onClick={() => (defaultLarge ? null : setShowLarge(false))}
       >
         <div className="WorkoutInput">
           <h4>Workout</h4>

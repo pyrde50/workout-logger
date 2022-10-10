@@ -3,7 +3,6 @@ import {
   NavigationContainer,
   Button,
   WorkoutBackground,
-  CustomTextField,
 } from '../../Components';
 import './styles.css';
 

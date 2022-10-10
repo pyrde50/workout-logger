@@ -1,5 +1,5 @@
 .WorkoutBackgroundContainer {
-    display: flex;
+  display: flex;
   width: 95%;
   height: 140px;
   background-color: white;
@@ -9,7 +9,7 @@
   margin-bottom: 2%;
 }
 .WorkoutBackgroundContainerSmall {
-    display: flex;
+  display: flex;
   width: 45%;
   height: 100px;
   background-color: white;
@@ -20,13 +20,12 @@
 }
 
 .WorkoutInput {
-    display: flex;
-    width: 19%;
-    height: 100%;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    padding-left: 0.5%;
-    padding-right: 0.5%;
-    
+  display: flex;
+  width: 19%;
+  height: 100%;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding-left: 0.5%;
+  padding-right: 0.5%;
 }
