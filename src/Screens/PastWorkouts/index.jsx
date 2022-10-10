@@ -1,7 +1,8 @@
 import React from 'react';
+import { NavigationContainer } from '../../Components';
 
-const PastWorkout = () => {
-  return <div>PastWorkout</div>;
+const PastWorkouts = () => {
+  return <NavigationContainer>PastWorkouts</NavigationContainer>;
 };
 
-export default PastWorkout;
+export default PastWorkouts;

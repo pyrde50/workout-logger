@@ -1,20 +1,33 @@
+
+old way alapuolella pitää keksiä parempi jossain kohtaa TODO
+:root {
+  --main: #70C3FF;
+  --secondary: #D6D6D6;
+  --background: #FFFFFF;
+  --text: #000000;
+  --background2: #D6D6D650;
+}
+
 .Container {
   width: 100%;
   height: 100%;
-  background-color: antiquewhite;
+  background-color: #D6D6D6;
 }
 
 .TopBar {
+  display: flex;
   width: 100%;
   height: 50px;
-  border: 3px solid black;
+  border: 3px solid #000000;
   top: 0px;
   flex-direction: row;
   justify-content: space-between;
   font-size: xx-large;
+  background-color: #FFFFFF;
 }
 
 .MainContainer {
+  display: flex;
   width: auto;
   height: 100%;
   flex-direction: row;
@@ -23,15 +36,42 @@
 .SideNavigation {
   width: 250px;
   height: 100%;
-  border: 3px solid black;
+  border: 3px solid #000000;
   flex-direction: column;
+  background-color: #FFFFFF;
 }
 
 .NavigationItem {
-  font-size: xx-large;
+  display: flex;
+  font-size: x-large;
+  align-items: center;
+  text-decoration: none;
+  color: #000000;
+  flex-direction: row;
+}
+
+.ActiveNavigationItem {
+  color: #000000;
+  text-decoration: none;
+  background-color: #D6D6D6;
+  width: 250px;
   padding-top: 20px;
   padding-bottom: 20px;
-  align-items: center;
-  justify-content: center;
+}
 
+.NonActiveNavigationItem {
+  color: #000000;
+  text-decoration: none;
+  padding-top: 20px;
+  padding-bottom: 20px;
+}
+
+.UserIcon {
+  display: flex;
+  background-color: #70C3FF;
+  height: 50px;
+  width: 50px;
+  border-radius: 50px;
+  justify-content: center;
+  align-items: center;
 }

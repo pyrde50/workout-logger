@@ -1,7 +1,8 @@
 import React from 'react';
+import { NavigationContainer } from '../../Components';
 
 const AddWorkout = () => {
-  return <div>AddWorkout</div>;
+  return <NavigationContainer>AddWorkout</NavigationContainer>;
 };
 
 export default AddWorkout;

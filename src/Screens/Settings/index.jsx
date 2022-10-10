@@ -1,7 +1,8 @@
 import React from 'react';
+import { NavigationContainer } from '../../Components';
 
 const Settings = () => {
-  return <div>Settings</div>;
+  return <NavigationContainer>Settings</NavigationContainer>;
 };
 
 export default Settings;

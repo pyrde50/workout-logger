@@ -7,14 +7,15 @@ import HomeIcon from '@mui/icons-material/Home';
 import FitnessCenterIcon from '@mui/icons-material/FitnessCenter';
 import BarChartIcon from '@mui/icons-material/BarChart';
 import ReorderIcon from '@mui/icons-material/Reorder';
-// import { Link } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
+// import theme from '../../colors';
+// import { ThemeProvider } from '@mui/material';
 
 const NavigationContainer = ({ children }) => {
   const { width } = useWindowDimensions();
   const [sideNavigationVisible, setSideNavigationVisible] = useState(true);
   const loggedIn = true; // TODO add login state
 
-  console.log(width, 'vittu23');
   useEffect(() => {
     if (width > 1200 && loggedIn) {
       setSideNavigationVisible(true);
@@ -26,24 +27,58 @@ const NavigationContainer = ({ children }) => {
   return (
     <div className="Container">
       <div className="TopBar">
-        <ReorderIcon />
+        <ReorderIcon
+          onClick={() => setSideNavigationVisible(!sideNavigationVisible)}
+          sx={{ fontSize: 50 }}
+        />
         <>Workout logger</>
-        <PersonIcon />
+        <div className="UserIcon">
+          <PersonIcon sx={{ fontSize: 45 }} />
+        </div>
       </div>
       <div className="MainContainer">
         {sideNavigationVisible ? (
           <div className="SideNavigation">
             <div className="NavigationItem">
-              <HomeIcon /> Home
+              <NavLink
+                to="/"
+                className={({ isActive }) =>
+                  isActive ? 'ActiveNavigationItem' : 'NonActiveNavigationItem'
+                }
+                end
+              >
+                <HomeIcon /> Home
+              </NavLink>
             </div>
             <div className="NavigationItem">
-              <FitnessCenterIcon /> Add Workout
+              <NavLink
+                to="/AddWorkout"
+                className={({ isActive }) =>
+                  isActive ? 'ActiveNavigationItem' : 'NonActiveNavigationItem'
+                }
+              >
+                <FitnessCenterIcon /> Add Workout
+              </NavLink>
             </div>
             <div className="NavigationItem">
-              <BarChartIcon /> Past Workouts
+              <NavLink
+                to="/PastWorkouts"
+                className={({ isActive }) =>
+                  isActive ? 'ActiveNavigationItem' : 'NonActiveNavigationItem'
+                }
+              >
+                <BarChartIcon /> Past Workouts
+              </NavLink>
             </div>
             <div className="NavigationItem">
-              <SettingsIcon /> Settings
+              <NavLink
+                to="/Settings"
+                className={({ isActive }) =>
+                  isActive ? 'ActiveNavigationItem' : 'NonActiveNavigationItem'
+                }
+              >
+                <SettingsIcon /> Settings
+              </NavLink>
             </div>
           </div>
         ) : null}
