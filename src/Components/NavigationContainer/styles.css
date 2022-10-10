@@ -1,22 +1,37 @@
 .Container {
-    width: '100%';
-    height: '100%';
+  width: 100%;
+  height: 100%;
+  background-color: antiquewhite;
 }
 
 .TopBar {
-    width: auto;
-    height: 50px;
-    border-color: black;
-    border-width: 2px;
-    top: 0px;
-    flex-direction: row;
-    justify-content: space-between;
+  width: 100%;
+  height: 50px;
+  border: 3px solid black;
+  top: 0px;
+  flex-direction: row;
+  justify-content: space-between;
+  font-size: xx-large;
+}
+
+.MainContainer {
+  width: auto;
+  height: 100%;
+  flex-direction: row;
 }
 
 .SideNavigation {
-    width: 200px;
-    height: '100%';
-    border-color: black;
-    border-width: 2px;
-    flex-direction: column;
+  width: 250px;
+  height: 100%;
+  border: 3px solid black;
+  flex-direction: column;
+}
+
+.NavigationItem {
+  font-size: xx-large;
+  padding-top: 20px;
+  padding-bottom: 20px;
+  align-items: center;
+  justify-content: center;
+
 }
