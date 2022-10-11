@@ -3,8 +3,12 @@ import { useFormik } from 'formik';
 import Paper from '@mui/material/Paper';
 import styles from '../../styles/login.module.css'
 import * as yup from 'yup';
-import { Button, TextField, Typography } from '@mui/material';
 import { Link }from 'react-router-dom';
+import loginService from '../../services/login';
+import { login } from '../../reducers/userReducer';
+import { useDispatch } from 'react-redux';
+
+import { Button, TextField, Typography } from '@mui/material';
 
 const validationSchema = yup.object({
   username: yup
@@ -17,9 +21,21 @@ const validationSchema = yup.object({
 
 const Login = () => {
 
+  const dispatch = useDispatch();
+
   // TODO!! SEND DATA TO DATABASE
   const handleLogin = async (values) => {
-    console.log(values);
+    try {
+      //Send POST request to the backend
+      const user = await loginService.login(values);
+      //Set the credentials to the local storage
+      window.localStorage.setItem('user', JSON.stringify(user));
+      //Set the user info to redux store
+      dispatch(login(user));
+      
+    } catch(error) {
+      console.error(error);
+    }
   }
 
   const formik = useFormik({
