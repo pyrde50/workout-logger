@@ -7,6 +7,7 @@ import { Link }from 'react-router-dom';
 import loginService from '../../services/login';
 import { login } from '../../reducers/userReducer';
 import { useDispatch } from 'react-redux';
+import { useNavigate, useLocation } from 'react-router';
 
 import { Button, TextField, Typography } from '@mui/material';
 
@@ -22,6 +23,10 @@ const validationSchema = yup.object({
 const Login = () => {
 
   const dispatch = useDispatch();
+  let navigate = useNavigate();
+  let location = useLocation();
+
+  let from = location.state?.from?.pathname || '/';
 
   // TODO!! SEND DATA TO DATABASE
   const handleLogin = async (values) => {
@@ -32,7 +37,8 @@ const Login = () => {
       window.localStorage.setItem('user', JSON.stringify(user));
       //Set the user info to redux store
       dispatch(login(user));
-      
+      //navigate to previous page that was opened
+      navigate(from, { replace: true});
     } catch(error) {
       console.error(error);
     }
