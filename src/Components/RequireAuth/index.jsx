@@ -23,18 +23,19 @@ const RequireAuth = ( { children} ) => {
             setLoading(false);
         }
     }, [])
-    
 
+    // User info not yet loaded
     if(loading && !user.user) {
         return (
             'loading..'
         );
     }
 
+    //No user logged
     if(!user.user) {
         return <Navigate to="/Login" state={{from: location}} replace/>
     }
-
+    
     return children
 }
 
