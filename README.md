@@ -79,3 +79,5 @@ TODO list
 - User button change colours to match design
 - Changing weight/distance in add workout and past workouts depending on the workout
 - Remove line new workout
+- calendar datepicker to new workout
+- input picker choose made workouts
