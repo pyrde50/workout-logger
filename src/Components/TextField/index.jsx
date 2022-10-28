@@ -2,7 +2,7 @@ import * as React from 'react';
 import Box from '@mui/material/Box';
 import TextField from '@mui/material/TextField';
 
-const CustomTextField = ({ disabled, value, width }) => {
+const CustomTextField = ({ disabled, value, width, onChange }) => {
   return (
     <Box
       component="form"
@@ -23,9 +23,10 @@ const CustomTextField = ({ disabled, value, width }) => {
       ) : (
         <TextField
           id="outlined-basic"
-          label="Outlined"
           variant="outlined"
           style={{ width: width }}
+          value={value}
+          onChange={() => onChange(event.target.value)}
         />
       )}
     </Box>

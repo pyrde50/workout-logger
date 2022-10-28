@@ -4,12 +4,14 @@ import './styles.css';
 import { useTranslation } from 'react-i18next';
 
 const WorkoutBackground = ({ data, defaultLarge }) => {
-  const [showLarge, setShowLarge] = useState(defaultLarge ? true : false);
   const {t} = useTranslation();
+  const [showLarge, setShowLarge] = useState(defaultLarge ? true : false);
+
+  const date = new Date(data.date);
   const dateString = [
-    data.date.getDate(),
-    data.date.getMonth() + 1,
-    data.date.getFullYear(),
+    date.getDate(),
+    date.getMonth() + 1,
+    date.getFullYear(),
   ].join('.');
   if (showLarge || defaultLarge) {
     return (
@@ -19,7 +21,7 @@ const WorkoutBackground = ({ data, defaultLarge }) => {
       >
         <div className="WorkoutInput">
           <h4>{t('workout')}</h4>
-          <CustomTextField disabled={true} value={data.workout} width={'85%'} />
+          <CustomTextField disabled={true} value={data.name} width={'85%'} />
         </div>
         <div className="WorkoutInput">
           <h4>{t('reps')}</h4>
@@ -27,7 +29,7 @@ const WorkoutBackground = ({ data, defaultLarge }) => {
         </div>
         <div className="WorkoutInput">
           <h4>{t('sets')}</h4>
-          <CustomTextField disabled={true} value={data.amount} width={'85%'} />
+          <CustomTextField disabled={true} value={data.sets} width={'85%'} />
         </div>
         <div className="WorkoutInput">
           <h4>{t('weight')}</h4>
@@ -59,7 +61,7 @@ const WorkoutBackground = ({ data, defaultLarge }) => {
         className="WorkoutBackgroundContainerSmall"
         onClick={() => setShowLarge(true)}
       >
-        <h4 style={{ width: '60%' }}>{t('workout')}: {data.workout}</h4>
+        <h4 style={{ width: '60%' }}>{t('workout')}: {data.name}</h4>
         <h4>{dateString}</h4>
       </div>
     );
