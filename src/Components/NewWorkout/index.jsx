@@ -24,7 +24,7 @@ const NewWorkout = ({ lines, setLines }) => {
     <div style={{ width: '100%' }}>
       <h2>Add new Workout</h2>
       {lines.map((item, index) => (
-        <div className="WorkoutBackgroundContainer" key={index}>
+        <div className="AddWorkoutBackgroundContainer" key={index}>
           <div className="WorkoutInput">
             <h4>Workout</h4>
             <CustomTextField
