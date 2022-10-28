@@ -1,55 +1,22 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import {
   NavigationContainer,
   Button,
   WorkoutBackground,
 } from '../../Components';
 import './styles.css';
-
-const mockData = [
-  {
-    workout: 'Bench Press',
-    reps: 10,
-    amount: 5,
-    weight: 100,
-    unit: 'KG',
-    date: new Date(),
-  },
-  {
-    workout: 'Bench Press',
-    reps: 10,
-    amount: 5,
-    weight: 100,
-    unit: 'KG',
-    date: new Date(),
-  },
-  {
-    workout: 'Bench Press',
-    reps: 10,
-    amount: 5,
-    weight: 100,
-    unit: 'KG',
-    date: new Date(),
-  },
-  {
-    workout: 'Bench Press',
-    reps: 10,
-    amount: 5,
-    weight: 100,
-    unit: 'KG',
-    date: new Date(),
-  },
-  {
-    workout: 'Bench Press',
-    reps: 10,
-    amount: 5,
-    weight: 100,
-    unit: 'KG',
-    date: new Date(),
-  },
-];
+import { get } from '../../api/helpers';
 
 const Main = () => {
+  const [exercises, setExercises] = useState([]);
+
+  useEffect(() => {
+    const fetch = async () => {
+      const data = await get('exercises');
+      setExercises(data);
+    };
+    fetch();
+  }, []);
   return (
     <NavigationContainer>
       <div className="Container">
@@ -60,7 +27,7 @@ const Main = () => {
           onClick={() => null}
         />
         <h1>History</h1>
-        {mockData.map((item, index) => (
+        {exercises.map((item, index) => (
           <WorkoutBackground data={item} key={index} />
         ))}
       </div>

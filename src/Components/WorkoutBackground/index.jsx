@@ -59,7 +59,7 @@ const WorkoutBackground = ({ data, defaultLarge }) => {
         className="WorkoutBackgroundContainerSmall"
         onClick={() => setShowLarge(true)}
       >
-        <h4 style={{ width: '60%' }}>workout: {data.workout}</h4>
+        <h4 style={{ width: '60%' }}>workout: {data.name}</h4>
         <h4>{dateString}</h4>
       </div>
     );
