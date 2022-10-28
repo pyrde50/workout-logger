@@ -5,10 +5,11 @@ import './styles.css';
 const WorkoutBackground = ({ data, defaultLarge }) => {
   const [showLarge, setShowLarge] = useState(defaultLarge ? true : false);
 
+  const date = new Date(data.date);
   const dateString = [
-    data.date.getDate(),
-    data.date.getMonth() + 1,
-    data.date.getFullYear(),
+    date.getDate(),
+    date.getMonth() + 1,
+    date.getFullYear(),
   ].join('.');
   if (showLarge || defaultLarge) {
     return (
@@ -18,15 +19,15 @@ const WorkoutBackground = ({ data, defaultLarge }) => {
       >
         <div className="WorkoutInput">
           <h4>Workout</h4>
-          <CustomTextField disabled={true} value={data.workout} width={'85%'} />
+          <CustomTextField disabled={true} value={data.name} width={'85%'} />
         </div>
         <div className="WorkoutInput">
           <h4>Reps</h4>
           <CustomTextField disabled={true} value={data.reps} width={'85%'} />
         </div>
         <div className="WorkoutInput">
-          <h4>Amount</h4>
-          <CustomTextField disabled={true} value={data.amount} width={'85%'} />
+          <h4>Sets</h4>
+          <CustomTextField disabled={true} value={data.sets} width={'85%'} />
         </div>
         <div className="WorkoutInput">
           <h4>Weight</h4>
