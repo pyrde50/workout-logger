@@ -2,6 +2,7 @@ import React from 'react';
 import CustomTextField from '../TextField';
 import { Button } from '..';
 import './styles.css';
+import DatePicker from '../DatePicker';
 
 const NewWorkout = ({ lines, setLines }) => {
   const changeData = (index, value) => {
@@ -69,8 +70,7 @@ const NewWorkout = ({ lines, setLines }) => {
           </div>
           <div className="WorkoutInput">
             <h4>Date</h4>
-            <CustomTextField
-              width={'85%'}
+            <DatePicker
               value={item.date}
               onChange={(value) => changeData(index, { date: value })}
             />
