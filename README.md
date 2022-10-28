@@ -68,3 +68,17 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/d
 ### `npm run build` fails to minify
 
 This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+
+
+TODO list
+
+- Add workout add new line
+- Add workout connect to backend
+- Past workouts connect to backend
+- Add workout get custom ready made workouts
+- Settings translation file and choose translation
+- Home history connect to backend
+- Add workout button on Home Screen not doing anything
+- Users name next to user button
+- User button change colours to match design
+- Changing weight/distance in add workout and past workouts depending on the workout

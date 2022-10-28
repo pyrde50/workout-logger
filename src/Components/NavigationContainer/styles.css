@@ -12,6 +12,30 @@ old way alapuolella pitää keksiä parempi jossain kohtaa TODO :root {
   background-color: #d6d6d6;
 }
 
+.Modal {
+  display: flex;
+  position: absolute;
+  top: 55px !important;
+  right: 0px !important;
+  left: auto;
+  bottom: auto;
+  height: 50px;
+  width: 80px;
+  background-color: #ffffff;
+}
+
+.ModalContent {
+  height: 50px;
+  width: 80px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.ReactModalPortal .ReactModal__Overlay.ReactModal__Overlay--after-open {
+  background-color: unset !important;
+}
+
 .TopBar {
   display: flex;
   width: 100%;
