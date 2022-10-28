@@ -1,4 +1,5 @@
 import React from 'react';
+import { useTranslation } from 'react-i18next';
 import { useFormik } from 'formik';
 import Paper from '@mui/material/Paper';
 import styles from '../../styles/login.module.css';
@@ -17,6 +18,8 @@ const validationSchema = yup.object({
 });
 
 const Login = () => {
+  const { t, i18n } = useTranslation();
+
   const dispatch = useDispatch();
   let navigate = useNavigate();
   let location = useLocation();
@@ -56,12 +59,12 @@ const Login = () => {
         <Paper elevation={10} className={styles.paper}>
           <form onSubmit={formik.handleSubmit} id={styles.form}>
             <Typography variant="h4" component="div" id={styles.login_text}>
-              LOGIN
+              {t('LOGIN')}
             </Typography>
             <TextField
               id="username"
               name="username"
-              label="Username"
+              label={t("username")}
               value={formik.values.username}
               onChange={formik.handleChange}
               error={formik.touched.username && Boolean(formik.errors.username)}
@@ -70,7 +73,7 @@ const Login = () => {
                   ? formik.errors.username
                     ? formik.errors.username
                     : ' '
-                  : 'Please enter username'
+                  : t('usernameHelper')
               }
               className={styles.textField}
               fullWidth
@@ -78,7 +81,7 @@ const Login = () => {
             <TextField
               id="password"
               name="password"
-              label="Password"
+              label={t('password')}
               type="password"
               value={formik.values.password}
               onChange={formik.handleChange}
@@ -88,7 +91,7 @@ const Login = () => {
                   ? formik.errors.password
                     ? formik.errors.password
                     : ' '
-                  : 'Please enter password'
+                  : t('passwordHelper')
               }
               className={styles.textField}
               fullWidth
@@ -100,12 +103,13 @@ const Login = () => {
               fullWidth
               disabled={!(formik.isValid && formik.dirty)}
             >
-              Log in
+              {t('logIn')}
             </Button>
           </form>
           <Button fullWidth id={styles.to_register_button}>
             <Link to="/Register" style={{ textDecoration: 'none' }}>
-              CLICK HERE TO REGISTER
+              {t('REGISTER')}
+              
             </Link>
           </Button>
         </Paper>

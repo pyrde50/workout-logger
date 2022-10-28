@@ -8,6 +8,7 @@ import loginService from '../../services/login';
 import { login } from '../../reducers/userReducer';
 import { useDispatch } from 'react-redux';
 import { useNavigate, useLocation } from 'react-router';
+import { useTranslation } from 'react-i18next';
 
 import { Button, TextField, Typography } from '@mui/material';
 
@@ -18,6 +19,7 @@ const validationSchema = yup.object({
 });
 
 const Registration = () => {
+  const {t} = useTranslation();
   const dispatch = useDispatch();
   let navigate = useNavigate();
   let location = useLocation();
@@ -59,12 +61,12 @@ const Registration = () => {
         <Paper elevation={10} className={styles.paper}>
           <form onSubmit={formik.handleSubmit} id={styles.form}>
             <Typography variant="h4" component="div" id={styles.login_text}>
-              REGISTER
+              {t('register')}
             </Typography>
             <TextField
               id="email"
               name="email"
-              label="Email"
+              label={t('email')}
               value={formik.values.email}
               onChange={formik.handleChange}
               error={formik.touched.email && Boolean(formik.errors.email)}
@@ -73,7 +75,7 @@ const Registration = () => {
                   ? formik.errors.email
                     ? formik.errors.email
                     : ' '
-                  : 'Please enter Email'
+                  : t('emailHelper')
               }
               className={styles.textField}
               fullWidth
@@ -81,7 +83,7 @@ const Registration = () => {
             <TextField
               id="username"
               name="username"
-              label="Username"
+              label={t("username")}
               value={formik.values.username}
               onChange={formik.handleChange}
               error={formik.touched.username && Boolean(formik.errors.username)}
@@ -90,7 +92,7 @@ const Registration = () => {
                   ? formik.errors.username
                     ? formik.errors.username
                     : ' '
-                  : 'Please enter username'
+                  : t('usernameHelper')
               }
               className={styles.textField}
               fullWidth
@@ -98,7 +100,7 @@ const Registration = () => {
             <TextField
               id="password"
               name="password"
-              label="Password"
+              label={t("password")}
               type="password"
               value={formik.values.password}
               onChange={formik.handleChange}
@@ -108,7 +110,7 @@ const Registration = () => {
                   ? formik.errors.password
                     ? formik.errors.password
                     : ' '
-                  : 'Please enter password'
+                  : t('passwordHelper')
               }
               className={styles.textField}
               fullWidth
@@ -120,12 +122,12 @@ const Registration = () => {
               fullWidth
               disabled={!(formik.isValid && formik.dirty)}
             >
-              Register
+              {t('register')}
             </Button>
           </form>
           <Button fullWidth id={styles.to_register_button}>
             <Link to="/Login" style={{ textDecoration: 'none' }}>
-              CLICK HERE TO LOGIN
+              {t('clickLogin')}
             </Link>
           </Button>
         </Paper>

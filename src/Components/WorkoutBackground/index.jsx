@@ -1,10 +1,11 @@
 import React, { useState } from 'react';
 import CustomTextField from '../TextField';
 import './styles.css';
+import { useTranslation } from 'react-i18next';
 
 const WorkoutBackground = ({ data, defaultLarge }) => {
   const [showLarge, setShowLarge] = useState(defaultLarge ? true : false);
-
+  const {t} = useTranslation();
   const dateString = [
     data.date.getDate(),
     data.date.getMonth() + 1,
@@ -17,19 +18,19 @@ const WorkoutBackground = ({ data, defaultLarge }) => {
         onClick={() => (defaultLarge ? null : setShowLarge(false))}
       >
         <div className="WorkoutInput">
-          <h4>Workout</h4>
+          <h4>{t('workout')}</h4>
           <CustomTextField disabled={true} value={data.workout} width={'85%'} />
         </div>
         <div className="WorkoutInput">
-          <h4>Reps</h4>
+          <h4>{t('reps')}</h4>
           <CustomTextField disabled={true} value={data.reps} width={'85%'} />
         </div>
         <div className="WorkoutInput">
-          <h4>Amount</h4>
+          <h4>{t('sets')}</h4>
           <CustomTextField disabled={true} value={data.amount} width={'85%'} />
         </div>
         <div className="WorkoutInput">
-          <h4>Weight</h4>
+          <h4>{t('weight')}</h4>
           <div
             style={{
               'flex-direction': 'row',
@@ -47,7 +48,7 @@ const WorkoutBackground = ({ data, defaultLarge }) => {
           </div>
         </div>
         <div className="WorkoutInput">
-          <h4>Date</h4>
+          <h4>{t('date')}</h4>
           <CustomTextField disabled={true} value={dateString} width={'85%'} />
         </div>
       </div>
@@ -58,7 +59,7 @@ const WorkoutBackground = ({ data, defaultLarge }) => {
         className="WorkoutBackgroundContainerSmall"
         onClick={() => setShowLarge(true)}
       >
-        <h4 style={{ width: '60%' }}>workout: {data.workout}</h4>
+        <h4 style={{ width: '60%' }}>{t('workout')}: {data.workout}</h4>
         <h4>{dateString}</h4>
       </div>
     );

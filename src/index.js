@@ -6,13 +6,17 @@ import './styles.css';
 import { Provider } from 'react-redux';
 import store from './store';
 
+import './i18n'
+
 //Render app into the root HTML DOM node
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <Provider store={store}>
-    <Router basename="">
-      <Routes />
-    </Router>
+     <React.Suspense fallback="loading">
+         <Router basename="">
+            <Routes />
+         </Router>
+     </React.Suspense>
   </Provider>,
 );

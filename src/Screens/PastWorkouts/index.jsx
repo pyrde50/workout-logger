@@ -1,5 +1,6 @@
 import React from 'react';
 import { NavigationContainer, WorkoutBackground } from '../../Components';
+import { useTranslation } from 'react-i18next';
 
 const mockData = [
   {
@@ -45,10 +46,11 @@ const mockData = [
 ];
 
 const PastWorkouts = () => {
+  const {t} = useTranslation();
   return (
     <NavigationContainer>
       <div>
-        <h1>History</h1>
+        <h1>{t('history')}</h1>
         {mockData.map((item, index) => (
           <WorkoutBackground data={item} key={index} defaultLarge={true} />
         ))}

@@ -13,8 +13,10 @@ import { NavLink } from 'react-router-dom';
 import Modal from 'react-modal';
 import { logout } from '../../reducers/userReducer';
 import { useDispatch } from 'react-redux';
+import { useTranslation } from 'react-i18next';
 
 const NavigationContainer = ({ children }) => {
+  const { t, i18n } = useTranslation()
   const dispatch = useDispatch();
   const { width } = useWindowDimensions();
   const [sideNavigationVisible, setSideNavigationVisible] = useState(true);
@@ -38,7 +40,7 @@ const NavigationContainer = ({ children }) => {
         onRequestClose={() => setIsOpen(false)}
       >
         <div className="ModalContent" onClick={() => dispatch(logout())}>
-          Log out
+        {t('logOut')}        
         </div>
       </Modal>
       <div className="TopBar">
@@ -62,7 +64,7 @@ const NavigationContainer = ({ children }) => {
                 }
                 end
               >
-                <HomeIcon /> Home
+                <HomeIcon /> {t('home')}
               </NavLink>
             </div>
             <div className="NavigationItem">
@@ -72,7 +74,7 @@ const NavigationContainer = ({ children }) => {
                   isActive ? 'ActiveNavigationItem' : 'NonActiveNavigationItem'
                 }
               >
-                <FitnessCenterIcon /> Add Workout
+                <FitnessCenterIcon /> {t('addWorkout')}
               </NavLink>
             </div>
             <div className="NavigationItem">
@@ -82,7 +84,7 @@ const NavigationContainer = ({ children }) => {
                   isActive ? 'ActiveNavigationItem' : 'NonActiveNavigationItem'
                 }
               >
-                <BarChartIcon /> Past Workouts
+                <BarChartIcon /> {t('pastWorkouts')}
               </NavLink>
             </div>
             <div className="NavigationItem">
@@ -92,7 +94,7 @@ const NavigationContainer = ({ children }) => {
                   isActive ? 'ActiveNavigationItem' : 'NonActiveNavigationItem'
                 }
               >
-                <SettingsIcon /> Settings
+                <SettingsIcon /> {t('settings')}
               </NavLink>
             </div>
           </div>
