@@ -6,7 +6,7 @@ import DatePicker from '../DatePicker';
 import { useTranslation } from 'react-i18next';
 
 const NewWorkout = ({ lines, setLines }) => {
-  const {t} = useTranslation();
+  const { t } = useTranslation();
   const changeData = (index, value) => {
     const line = lines[index];
     const newLine = {
@@ -21,8 +21,8 @@ const NewWorkout = ({ lines, setLines }) => {
           return newLine;
         }
       }),
-      );
-    };
+    );
+  };
 
   return (
     <div style={{ width: '100%' }}>

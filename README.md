@@ -73,7 +73,6 @@ TODO list
 
 - Add workout connect to backend
 - Add workout get custom ready made workouts
-- Add workout button on Home Screen not doing anything
 - Users name next to user button
 - User button change colours to match design
 - Changing weight/distance in add workout and past workouts depending on the workout

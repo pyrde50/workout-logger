@@ -3,25 +3,25 @@ import { NavigationContainer } from '../../Components';
 import { useTranslation } from 'react-i18next';
 import { Button } from '../../Components';
 
-
 const lngs = {
-  en: { nativeName: 'English'},
-  fi: { nativeName: 'Suomi'}
+  en: { nativeName: 'English' },
+  fi: { nativeName: 'Suomi' },
 };
 
 const Settings = () => {
-  const {t, i18n} = useTranslation();
+  const { t, i18n } = useTranslation();
   return (
-    <div className='Container'>
+    <div className="Container">
       <NavigationContainer>
-        <h1>{t('settings')}</h1><br></br>
+        <h1>{t('settings')}</h1>
+        <br></br>
         <div>
-          {Object.keys(lngs).map((lng) =>(
-            <Button 
+          {Object.keys(lngs).map((lng) => (
+            <Button
               text={lng}
-              type='submit' 
-              key={lng} 
-              onClick={() => i18n.changeLanguage(lng)} 
+              type="submit"
+              key={lng}
+              onClick={() => i18n.changeLanguage(lng)}
               disabled={i18n.resolvedLanguage === lng}
               width={200}
               height={50}
@@ -30,9 +30,10 @@ const Settings = () => {
             </Button>
           ))}
         </div>
-      </NavigationContainer>;
+      </NavigationContainer>
+      ;
     </div>
-  )
+  );
 };
 
 export default Settings;

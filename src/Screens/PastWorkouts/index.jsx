@@ -5,7 +5,7 @@ import { useTranslation } from 'react-i18next';
 
 const PastWorkouts = () => {
   const [exercises, setExercises] = useState([]);
-  const {t} = useTranslation();
+  const { t } = useTranslation();
 
   useEffect(() => {
     const fetch = async () => {

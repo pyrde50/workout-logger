@@ -4,7 +4,7 @@ import './styles.css';
 import { useTranslation } from 'react-i18next';
 
 const WorkoutBackground = ({ data, defaultLarge }) => {
-  const {t} = useTranslation();
+  const { t } = useTranslation();
   const [showLarge, setShowLarge] = useState(defaultLarge ? true : false);
 
   const date = new Date(data.date);
@@ -61,7 +61,9 @@ const WorkoutBackground = ({ data, defaultLarge }) => {
         className="WorkoutBackgroundContainerSmall"
         onClick={() => setShowLarge(true)}
       >
-        <h4 style={{ width: '60%' }}>{t('workout')}: {data.name}</h4>
+        <h4 style={{ width: '60%' }}>
+          {t('workout')}: {data.name}
+        </h4>
         <h4>{dateString}</h4>
       </div>
     );
