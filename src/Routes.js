@@ -1,4 +1,3 @@
-import { useLocation } from 'react-router-dom';
 import React from 'react';
 import { Routes as Switch, Route } from 'react-router-dom';
 import Login from './Screens/Login';
@@ -12,8 +11,6 @@ import Registration from './Screens/Registration';
 // TODO add protected route for after login (component which redirects you to login if no token)
 
 const Routes = () => {
-  const location = useLocation();
-
   return (
     <Switch>
       <Route path="/Login" element={<Login />} />

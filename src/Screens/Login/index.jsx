@@ -18,7 +18,7 @@ const validationSchema = yup.object({
 });
 
 const Login = () => {
-  const { t, i18n } = useTranslation();
+  const { t } = useTranslation();
 
   const dispatch = useDispatch();
   let navigate = useNavigate();
@@ -64,7 +64,7 @@ const Login = () => {
             <TextField
               id="username"
               name="username"
-              label={t("username")}
+              label={t('username')}
               value={formik.values.username}
               onChange={formik.handleChange}
               error={formik.touched.username && Boolean(formik.errors.username)}
@@ -109,7 +109,6 @@ const Login = () => {
           <Button fullWidth id={styles.to_register_button}>
             <Link to="/Register" style={{ textDecoration: 'none' }}>
               {t('REGISTER')}
-              
             </Link>
           </Button>
         </Paper>

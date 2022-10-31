@@ -16,7 +16,7 @@ import { useDispatch } from 'react-redux';
 import { useTranslation } from 'react-i18next';
 
 const NavigationContainer = ({ children }) => {
-  const { t, i18n } = useTranslation()
+  const { t } = useTranslation();
   const dispatch = useDispatch();
   const { width } = useWindowDimensions();
   const [sideNavigationVisible, setSideNavigationVisible] = useState(true);
@@ -40,7 +40,7 @@ const NavigationContainer = ({ children }) => {
         onRequestClose={() => setIsOpen(false)}
       >
         <div className="ModalContent" onClick={() => dispatch(logout())}>
-        {t('logOut')}        
+          {t('logOut')}
         </div>
       </Modal>
       <div className="TopBar">

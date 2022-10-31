@@ -19,7 +19,7 @@ const validationSchema = yup.object({
 });
 
 const Registration = () => {
-  const {t} = useTranslation();
+  const { t } = useTranslation();
   const dispatch = useDispatch();
   let navigate = useNavigate();
   let location = useLocation();
@@ -30,7 +30,7 @@ const Registration = () => {
   const handleRegistration = async (values) => {
     try {
       //Send POST request to the backend
-      const user = await loginService.registration(values);
+      await loginService.registration(values);
       //Set the credentials to the local storage
       const loggedInUser = await loginService.login(values);
       window.localStorage.setItem('user', JSON.stringify(loggedInUser));
@@ -83,7 +83,7 @@ const Registration = () => {
             <TextField
               id="username"
               name="username"
-              label={t("username")}
+              label={t('username')}
               value={formik.values.username}
               onChange={formik.handleChange}
               error={formik.touched.username && Boolean(formik.errors.username)}
@@ -100,7 +100,7 @@ const Registration = () => {
             <TextField
               id="password"
               name="password"
-              label={t("password")}
+              label={t('password')}
               type="password"
               value={formik.values.password}
               onChange={formik.handleChange}
