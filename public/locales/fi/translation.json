@@ -22,5 +22,6 @@
   "passwordHelper": "Kirjoita salasana",
   "password": "Salasana",
   "username": "Käyttäjänimi",
-  "email": "Sähköposti"
+  "email": "Sähköposti",
+  "language": "Kieli"
 }

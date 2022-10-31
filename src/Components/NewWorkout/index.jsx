@@ -134,7 +134,6 @@ const NewWorkout = ({ lines, setLines, workouts }) => {
                 onClick={() =>
                   setLines(
                     lines.filter((item, i) => {
-                      console.log(item);
                       return i !== index;
                     }),
                   )

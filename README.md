@@ -76,4 +76,3 @@ TODO list
 - Users name next to user button
 - User button change colours to match design
 - Changing weight/distance in add workout and past workouts depending on the workout
-- change settings language to dropdown picker

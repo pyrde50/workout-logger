@@ -22,5 +22,6 @@
   "passwordHelper": "Please enter password",
   "password": "Password",
   "username": "Username",
-  "email": "Email"
+  "email": "Email",
+  "language": "Language"
 }

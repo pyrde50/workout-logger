@@ -3,7 +3,13 @@ import Box from '@mui/material/Box';
 import MenuItem from '@mui/material/MenuItem';
 import Select from '@mui/material/Select';
 
-const CustomDropdownPicker = ({ value, setValue, items, index }) => {
+const CustomDropdownPicker = ({
+  value,
+  setValue,
+  items,
+  index,
+  backgroundColor,
+}) => {
   return (
     <Box
       component="form"
@@ -19,6 +25,7 @@ const CustomDropdownPicker = ({ value, setValue, items, index }) => {
         value={value}
         label="Age"
         onChange={(event) => setValue(index, event.target.value)}
+        style={{ backgroundColor: backgroundColor }}
       >
         {items.map((item) => (
           <MenuItem value={item.value} key={item.id}>
