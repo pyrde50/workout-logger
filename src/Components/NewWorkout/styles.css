@@ -6,6 +6,7 @@
   border-radius: 15px;
   flex-direction: row;
   padding: 1%;
+  position: relative;
 }
 .AddWorkoutBackgroundContainerSmall {
   display: flex;
@@ -27,4 +28,18 @@
   align-items: center;
   padding-left: 0.5%;
   padding-right: 0.5%;
+}
+
+.Delete {
+  position: absolute; 
+  display: flex; 
+  top: -25px; 
+  right: -25px; 
+  height: 50px; 
+  width: 50px;
+}
+
+.Icon {
+  height: 50px !important;
+  width: 50px !important;
 }

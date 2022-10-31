@@ -4,6 +4,7 @@ import { Button } from '..';
 import './styles.css';
 import DatePicker from '../DatePicker';
 import { useTranslation } from 'react-i18next';
+import CancelIcon from '@mui/icons-material/Cancel';
 
 const NewWorkout = ({ lines, setLines }) => {
   const { t } = useTranslation();
@@ -96,6 +97,17 @@ const NewWorkout = ({ lines, setLines }) => {
                       date: new Date(),
                     }),
                   )
+                }
+              />
+            </div>
+          ) : null}
+          {index !== 0 ? (
+            <div className="Delete">
+              <CancelIcon
+                className="Icon"
+                color={'error'}
+                onClick={() =>
+                  setLines(lines.filter((_item, i) => i !== index))
                 }
               />
             </div>
