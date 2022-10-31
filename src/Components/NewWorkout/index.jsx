@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import CustomTextField from '../TextField';
 import { Button } from '..';
 import './styles.css';
@@ -30,7 +30,7 @@ const NewWorkout = ({ lines, setLines, workouts }) => {
     const line = lines[index];
     const newLine = {
       ...line,
-      ...value,
+      ...{ exercise: value },
     };
     setLines(
       lines.map((item, i) => {
@@ -52,9 +52,10 @@ const NewWorkout = ({ lines, setLines, workouts }) => {
             <h4>{t('workout')}</h4>
             <CustomDropdownPicker
               items={workouts}
-              setItems={changeDropdownValue}
-              value={0}
+              setValue={changeDropdownValue}
+              value={item.exercise}
               width={'85%'}
+              index={index}
             />
             {/*<CustomTextField
               width={'85%'}
@@ -114,7 +115,7 @@ const NewWorkout = ({ lines, setLines, workouts }) => {
                 onClick={() =>
                   setLines(
                     lines.concat({
-                      name: '',
+                      exercise: '',
                       reps: 0,
                       amount: 0,
                       weight: 0,
@@ -131,7 +132,12 @@ const NewWorkout = ({ lines, setLines, workouts }) => {
                 className="Icon"
                 color={'error'}
                 onClick={() =>
-                  setLines(lines.filter((_item, i) => i !== index))
+                  setLines(
+                    lines.filter((item, i) => {
+                      console.log(item);
+                      return i !== index;
+                    }),
+                  )
                 }
               />
             </div>

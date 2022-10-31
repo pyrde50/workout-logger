@@ -3,8 +3,7 @@ import Box from '@mui/material/Box';
 import MenuItem from '@mui/material/MenuItem';
 import Select from '@mui/material/Select';
 
-const CustomDropdownPicker = ({ value, setValue, items }) => {
-  console.log(items, 'vittu32');
+const CustomDropdownPicker = ({ value, setValue, items, index }) => {
   return (
     <Box
       component="form"
@@ -19,7 +18,7 @@ const CustomDropdownPicker = ({ value, setValue, items }) => {
         id="demo-simple-select"
         value={value}
         label="Age"
-        onChange={setValue}
+        onChange={(event) => setValue(index, event.target.value)}
       >
         {items.map((item) => (
           <MenuItem value={item.value} key={item.id}>
