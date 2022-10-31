@@ -1,14 +1,32 @@
-import React from 'react';
+import React, { useState } from 'react';
 import CustomTextField from '../TextField';
 import { Button } from '..';
 import './styles.css';
 import DatePicker from '../DatePicker';
 import { useTranslation } from 'react-i18next';
 import CancelIcon from '@mui/icons-material/Cancel';
+import { CustomDropdownPicker } from '..';
 
-const NewWorkout = ({ lines, setLines }) => {
+const NewWorkout = ({ lines, setLines, workouts }) => {
   const { t } = useTranslation();
   const changeData = (index, value) => {
+    const line = lines[index];
+    const newLine = {
+      ...line,
+      ...value,
+    };
+    setLines(
+      lines.map((item, i) => {
+        if (index !== i) {
+          return item;
+        } else {
+          return newLine;
+        }
+      }),
+    );
+  };
+
+  const changeDropdownValue = (index, value) => {
     const line = lines[index];
     const newLine = {
       ...line,
@@ -32,11 +50,17 @@ const NewWorkout = ({ lines, setLines }) => {
         <div className="AddWorkoutBackgroundContainer" key={index}>
           <div className="WorkoutInput">
             <h4>{t('workout')}</h4>
-            <CustomTextField
+            <CustomDropdownPicker
+              items={workouts}
+              setItems={changeDropdownValue}
+              value={0}
+              width={'85%'}
+            />
+            {/*<CustomTextField
               width={'85%'}
               value={item.name}
               onChange={(value) => changeData(index, { name: value })}
-            />
+      />*/}
           </div>
           <div className="WorkoutInput">
             <h4>{t('reps')}</h4>
