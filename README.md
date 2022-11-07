@@ -75,9 +75,9 @@ TODO list
 - Add workout get custom ready made workouts
 - Users name next to user button
 - User button change colours to match design
-- Loading screens
 - pagination for past and history
 - after logout back navigates back to past workouts
 - error msg
 - success msg
 - poista pvm muista kun ekasta
+- korjaa treeni valikko add workout kun pieni screeni
