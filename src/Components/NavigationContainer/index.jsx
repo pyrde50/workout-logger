@@ -12,10 +12,11 @@ import { NavLink } from 'react-router-dom';
 // import { ThemeProvider } from '@mui/material';
 import Modal from 'react-modal';
 import { logout } from '../../reducers/userReducer';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { useTranslation } from 'react-i18next';
 
 const NavigationContainer = ({ children }) => {
+  const user = useSelector((state) => state.user);
   const { t } = useTranslation();
   const dispatch = useDispatch();
   const { width } = useWindowDimensions();
@@ -49,8 +50,11 @@ const NavigationContainer = ({ children }) => {
           sx={{ fontSize: 50 }}
         />
         <>Workout logger</>
-        <div className="UserIcon" onClick={() => setIsOpen(true)}>
-          <PersonIcon sx={{ fontSize: 45 }} />
+        <div className="RightHeader">
+          <h4>{user?.user?.username ? user?.user?.username : ''}</h4>
+          <div className="UserIcon" onClick={() => setIsOpen(true)}>
+            <PersonIcon sx={{ fontSize: 45 }} />
+          </div>
         </div>
       </div>
       <div className="MainContainer">

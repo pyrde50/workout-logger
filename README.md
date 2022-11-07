@@ -73,7 +73,6 @@ TODO list
 
 - Add workout connect to backend
 - Add workout get custom ready made workouts
-- Users name next to user button
 - User button change colours to match design
 - pagination for past and history
 - after logout back navigates back to past workouts
@@ -81,3 +80,5 @@ TODO list
 - success msg
 - poista pvm muista kun ekasta
 - korjaa treeni valikko add workout kun pieni screeni
+- Add loader login
+- checked logged in state

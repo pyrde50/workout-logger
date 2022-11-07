@@ -96,10 +96,18 @@ old way alapuolella pitää keksiä parempi jossain kohtaa TODO :root {
   border-radius: 50px;
   justify-content: center;
   align-items: center;
+  margin-left: 10px;
 }
 
 .DataContainer {
   margin: 20px;
   display: flex;
   width: 100%;
+}
+
+.RightHeader {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
 }
