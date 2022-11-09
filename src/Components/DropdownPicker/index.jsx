@@ -28,7 +28,7 @@ const CustomDropdownPicker = ({
         style={{ backgroundColor: backgroundColor }}
       >
         {items.map((item) => (
-          <MenuItem value={item.value} key={item.id}>
+          <MenuItem value={item.id} key={item.id}>
             {item.value}
           </MenuItem>
         ))}
