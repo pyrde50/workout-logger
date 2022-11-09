@@ -40,7 +40,13 @@ const NavigationContainer = ({ children }) => {
         ariaHideApp={false}
         onRequestClose={() => setIsOpen(false)}
       >
-        <div className="ModalContent" onClick={() => dispatch(logout())}>
+        <div
+          className="ModalContent"
+          onClick={() => {
+            window.localStorage.removeItem('user');
+            dispatch(logout());
+          }}
+        >
           {t('logOut')}
         </div>
       </Modal>

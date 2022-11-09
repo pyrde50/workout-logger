@@ -72,13 +72,10 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/t
 TODO list
 
 - Add workout connect to backend
-- Add workout get custom ready made workouts
 - User button change colours to match design
 - pagination for past and history
-- after logout back navigates back to past workouts
 - error msg
 - success msg
 - poista pvm muista kun ekasta
 - korjaa treeni valikko add workout kun pieni screeni
 - Add loader login
-- checked logged in state

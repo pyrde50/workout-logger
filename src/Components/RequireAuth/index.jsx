@@ -7,11 +7,13 @@ const RequireAuth = ({ children }) => {
   // User from the redux store
   let user = useSelector((state) => state.user);
 
+  console.log(user, 'vittu23');
   const dispatch = useDispatch();
   // Helper state as for not to navigate before checking localstorage information
   const [loading, setLoading] = useState(true);
   // For redirecting
   let location = useLocation();
+  const userToken = window.localStorage.getItem('user');
 
   useEffect(() => {
     const loggedUser = window.localStorage.getItem('user');
@@ -30,7 +32,7 @@ const RequireAuth = ({ children }) => {
   }
 
   //No user logged
-  if (!user.user) {
+  if (!user.user || !userToken) {
     return <Navigate to="/Login" state={{ from: location }} replace />;
   }
 
