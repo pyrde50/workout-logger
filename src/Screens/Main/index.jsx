@@ -22,7 +22,7 @@ const Main = () => {
     const fetch = async () => {
       try {
         setLoading(true);
-        const data = await get('exercises');
+        const data = await get('workout_session/');
         setExercises(data);
         setLoading(false);
       } catch (e) {

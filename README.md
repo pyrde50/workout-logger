@@ -76,4 +76,3 @@ TODO list
 - pagination for past and history
 - mobile views
 - fix UI style
-- change endpoints of workouts to sessions

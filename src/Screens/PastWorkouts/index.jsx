@@ -16,7 +16,8 @@ const PastWorkouts = () => {
     const fetch = async () => {
       try {
         setLoading(true);
-        const data = await get('exercises');
+        const data = await get('workout_session/');
+        console.log(data, 'vittu');
         setExercises(data);
       } catch (e) {
         console.log('Error: ', e);

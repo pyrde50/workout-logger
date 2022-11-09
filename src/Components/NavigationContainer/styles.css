@@ -113,7 +113,7 @@ old way alapuolella pitää keksiä parempi jossain kohtaa TODO :root {
 }
 .msgError {
   display: flex;
-  position:absolute;
+  position: absolute;
   left: 5%;
   bottom: 5%;
   background-color: red;
@@ -123,7 +123,7 @@ old way alapuolella pitää keksiä parempi jossain kohtaa TODO :root {
 
 .msgSuccess {
   display: flex;
-  position:absolute;
+  position: absolute;
   left: 5%;
   bottom: 5%;
   background-color: green;
@@ -142,6 +142,6 @@ old way alapuolella pitää keksiä parempi jossain kohtaa TODO :root {
   justify-content: center;
   align-items: center;
   display: flex;
-  padding:5px;
+  padding: 5px;
   width: 90%;
 }
