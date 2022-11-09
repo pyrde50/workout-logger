@@ -5,6 +5,7 @@ import moment from 'moment';
 import { get } from '../../api/helpers';
 import ReadyMadeWorkouts from '../../Components/ReadyMadeWorkouts';
 import Loader from '../../Components/Loader';
+import './styles.css';
 
 const AddWorkout = () => {
   const [lines, setLines] = useState([
@@ -31,7 +32,7 @@ const AddWorkout = () => {
   }, []);
   return (
     <NavigationContainer>
-      <div>
+      <div className="AddWorkoutContainer">
         <NewWorkout lines={lines} setLines={setLines} workouts={workouts} />
         {!loading ? (
           <ReadyMadeWorkouts

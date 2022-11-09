@@ -5,6 +5,7 @@ import DatePicker from '../DatePicker';
 import { useTranslation } from 'react-i18next';
 import CancelIcon from '@mui/icons-material/Cancel';
 import { CustomDropdownPicker } from '..';
+import './styles.css';
 
 const WorkoutInput = ({ index, item, workouts, setLines, lines }) => {
   const { t } = useTranslation();
@@ -55,7 +56,7 @@ const WorkoutInput = ({ index, item, workouts, setLines, lines }) => {
               ? ''
               : workouts.find((workout) => workout.id === item?.exercise)?.id
           }
-          width={'85%'}
+          width="85%"
           index={index}
         />
         {/*<CustomTextField
@@ -88,10 +89,11 @@ const WorkoutInput = ({ index, item, workouts, setLines, lines }) => {
             display: 'flex',
             justifyContent: 'center',
             alignItems: 'center',
+            width: '100%',
           }}
         >
           <CustomTextField
-            width={'85%'}
+            width={'90%'}
             value={item.weight}
             onChange={(value) => changeData(index, { weight: value })}
           />
@@ -101,14 +103,16 @@ const WorkoutInput = ({ index, item, workouts, setLines, lines }) => {
       {index === 0 ? (
         <div className="WorkoutInput">
           <h4>{t('date')}</h4>
-          <DatePicker
-            value={item.date}
-            onChange={(value) => changeData(index, { date: value })}
-          />
+          <div id="DatePickerContainer">
+            <DatePicker
+              value={item.date}
+              onChange={(value) => changeData(index, { date: value })}
+            />
+          </div>
         </div>
       ) : null}
-      {index === 0 ? (
-        <div className="WorkoutInput">
+      {index === lines.length - 1 ? (
+        <div className="WorkoutInput" id="AddWorkoutButtons">
           <Button text={t('submit')} width={'100%'} height={'40%'} />
           <div style={{ height: 10 }} />
           <Button
