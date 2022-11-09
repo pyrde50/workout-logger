@@ -42,7 +42,7 @@ const AddWorkout = () => {
             excercise_names={workouts}
           />
         ) : (
-          <Loader />
+          <Loader width={200} height={200} />
         )}
       </div>
     </NavigationContainer>

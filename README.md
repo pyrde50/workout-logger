@@ -76,5 +76,5 @@ TODO list
 - pagination for past and history
 - error msg
 - success msg
-- Add loader login
 - mobile views
+- fix UI style

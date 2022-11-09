@@ -42,7 +42,7 @@ const Main = () => {
         </NavLink>
         <h1>{t('history')}</h1>
         {loading ? (
-          <Loader />
+          <Loader width={200} height={200} />
         ) : (
           exercises.map((item, index) => (
             <WorkoutBackground data={item} key={index} />

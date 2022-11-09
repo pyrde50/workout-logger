@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useFormik } from 'formik';
 import Paper from '@mui/material/Paper';
@@ -11,6 +11,7 @@ import { useDispatch } from 'react-redux';
 import { useNavigate, useLocation } from 'react-router';
 
 import { Button, TextField, Typography } from '@mui/material';
+import Loader from '../../Components/Loader';
 
 const validationSchema = yup.object({
   username: yup.string('Enter your username').required('Username required'),
@@ -19,6 +20,7 @@ const validationSchema = yup.object({
 
 const Login = () => {
   const { t } = useTranslation();
+  const [loading, setLoading] = useState(false);
 
   const dispatch = useDispatch();
   let navigate = useNavigate();
@@ -29,6 +31,7 @@ const Login = () => {
   // TODO!! SEND DATA TO DATABASE
   const handleLogin = async (values) => {
     try {
+      setLoading(true);
       //Send POST request to the backend
       const user = await loginService.login(values);
       //Set the credentials to the local storage
@@ -39,6 +42,8 @@ const Login = () => {
       navigate(from, { replace: true });
     } catch (error) {
       console.error(error);
+    } finally {
+      setLoading(false);
     }
   };
 
@@ -103,7 +108,7 @@ const Login = () => {
               fullWidth
               disabled={!(formik.isValid && formik.dirty)}
             >
-              {t('logIn')}
+              {!loading ? t('logIn') : <Loader width={25} height={25} />}
             </Button>
           </form>
           <Button fullWidth id={styles.to_register_button}>
