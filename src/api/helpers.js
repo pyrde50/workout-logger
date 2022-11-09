@@ -1,5 +1,4 @@
 import axios from 'axios';
-// import { useEffect } from "react";
 
 const baseUrl = 'https://workout-logger-backend.onrender.com/api';
 

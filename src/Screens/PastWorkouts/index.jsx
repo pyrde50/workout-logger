@@ -11,10 +11,15 @@ const PastWorkouts = () => {
 
   useEffect(() => {
     const fetch = async () => {
-      setLoading(true);
-      const data = await get('exercises');
-      setExercises(data);
-      setLoading(false);
+      try {
+        setLoading(true);
+        const data = await get('exercises');
+        setExercises(data);
+      } catch (e) {
+        console.log('Error: ', e);
+      } finally {
+        setLoading(false);
+      }
     };
     fetch();
   }, []);

@@ -17,15 +17,20 @@ const AddWorkout = () => {
 
   useEffect(() => {
     const fetch = async () => {
-      setLoading(true);
-      const res = await get('exercise_names/');
-      const finalRes = res.map((item) => {
-        return { id: item.id, value: item.exercise };
-      });
-      setWorkouts(finalRes);
-      const resWorkouts = await get('workouts/');
-      setReadyWorkouts(resWorkouts);
-      setLoading(false);
+      try {
+        setLoading(true);
+        const res = await get('exercise_names/');
+        const finalRes = res.map((item) => {
+          return { id: item.id, value: item.exercise };
+        });
+        setWorkouts(finalRes);
+        const resWorkouts = await get('workouts/');
+        setReadyWorkouts(resWorkouts);
+      } catch (e) {
+        console.log('Error: ', e);
+      } finally {
+        setLoading(false);
+      }
     };
     fetch();
   }, []);
