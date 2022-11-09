@@ -76,6 +76,5 @@ TODO list
 - pagination for past and history
 - error msg
 - success msg
-- poista pvm muista kun ekasta
-- korjaa treeni valikko add workout kun pieni screeni
 - Add loader login
+- mobile views

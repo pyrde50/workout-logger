@@ -42,6 +42,7 @@ const WorkoutInput = ({ index, item, workouts, setLines, lines }) => {
       }),
     );
   };
+
   return (
     <div className="AddWorkoutBackgroundContainer" key={index}>
       <div className="WorkoutInput">
@@ -50,9 +51,9 @@ const WorkoutInput = ({ index, item, workouts, setLines, lines }) => {
           items={workouts}
           setValue={changeDropdownValue}
           value={
-            item?.exercise < 0
+            item?.exercise < 0 || item.exercise === undefined
               ? ''
-              : workouts.find((workout) => workout.id === item.exercise).id
+              : workouts.find((workout) => workout.id === item?.exercise)?.id
           }
           width={'85%'}
           index={index}
@@ -97,13 +98,15 @@ const WorkoutInput = ({ index, item, workouts, setLines, lines }) => {
           KG
         </div>
       </div>
-      <div className="WorkoutInput">
-        <h4>{t('date')}</h4>
-        <DatePicker
-          value={item.date}
-          onChange={(value) => changeData(index, { date: value })}
-        />
-      </div>
+      {index === 0 ? (
+        <div className="WorkoutInput">
+          <h4>{t('date')}</h4>
+          <DatePicker
+            value={item.date}
+            onChange={(value) => changeData(index, { date: value })}
+          />
+        </div>
+      ) : null}
       {index === 0 ? (
         <div className="WorkoutInput">
           <Button text={t('submit')} width={'100%'} height={'40%'} />

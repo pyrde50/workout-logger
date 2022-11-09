@@ -9,12 +9,13 @@ const CustomDropdownPicker = ({
   items,
   index,
   backgroundColor,
+  width,
 }) => {
   return (
     <Box
       component="form"
       sx={{
-        '& > :not(style)': { m: 1, width: '25ch' },
+        '& > :not(style)': { m: 1, width: width, minWidth: '16ch' },
       }}
       noValidate
       autoComplete="off"

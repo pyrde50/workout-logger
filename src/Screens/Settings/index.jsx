@@ -32,6 +32,7 @@ const Settings = () => {
               index={0}
               items={picker}
               backgroundColor={'white'}
+              width={'25ch'}
             />
           </div>
         </div>

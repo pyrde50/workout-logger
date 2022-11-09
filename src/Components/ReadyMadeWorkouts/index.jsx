@@ -61,6 +61,7 @@ const ReadyMadeWorkouts = ({
           })}
           index={0}
           backgroundColor={'#FFFFFF'}
+          width={'25ch'}
         />
       )}
     </div>
