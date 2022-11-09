@@ -14,9 +14,12 @@ import Modal from 'react-modal';
 import { logout } from '../../reducers/userReducer';
 import { useDispatch, useSelector } from 'react-redux';
 import { useTranslation } from 'react-i18next';
+import { hideMessage } from '../../reducers/msgReducer';
+import CloseIcon from '@mui/icons-material/Close';
 
 const NavigationContainer = ({ children }) => {
   const user = useSelector((state) => state.user);
+  const msg = useSelector((state) => state.msg.msg);
   const { t } = useTranslation();
   const dispatch = useDispatch();
   const { width } = useWindowDimensions();
@@ -111,6 +114,21 @@ const NavigationContainer = ({ children }) => {
         ) : null}
         <div className="DataContainer">{children}</div>
       </div>
+      {msg?.type === 'Error' ? (
+        <div className="msgError">
+          <div className="exit" onClick={() => dispatch(hideMessage())}>
+            <CloseIcon />
+          </div>
+          <div className="msgText">{msg.msg}</div>
+        </div>
+      ) : msg?.type === 'Success' ? (
+        <div className="msgSuccess">
+          <div className="exit" onClick={() => dispatch(hideMessage())}>
+            <CloseIcon />
+          </div>
+          <div className="msgText">{msg.msg}</div>
+        </div>
+      ) : null}
     </div>
   );
 };

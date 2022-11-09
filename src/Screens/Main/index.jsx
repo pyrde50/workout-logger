@@ -9,8 +9,11 @@ import { get } from '../../api/helpers';
 import { useTranslation } from 'react-i18next';
 import { NavLink } from 'react-router-dom';
 import Loader from '../../Components/Loader';
+import { useDispatch } from 'react-redux';
+import { showMessage } from '../../reducers/msgReducer';
 
 const Main = () => {
+  const dispatch = useDispatch();
   const [exercises, setExercises] = useState([]);
   const [loading, setLoading] = useState(false);
   const { t } = useTranslation();
@@ -24,6 +27,12 @@ const Main = () => {
         setLoading(false);
       } catch (e) {
         console.log('Error: ', e);
+        dispatch(
+          showMessage({
+            msg: 'Failed to load data from server. Please try again later.',
+            type: 'Error',
+          }),
+        );
       } finally {
         setLoading(false);
       }

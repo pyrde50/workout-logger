@@ -74,7 +74,6 @@ TODO list
 - Add workout connect to backend
 - User button change colours to match design
 - pagination for past and history
-- error msg
-- success msg
 - mobile views
 - fix UI style
+- change endpoints of workouts to sessions

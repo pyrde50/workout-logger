@@ -111,3 +111,37 @@ old way alapuolella pitää keksiä parempi jossain kohtaa TODO :root {
   justify-content: center;
   align-items: center;
 }
+.msgError {
+  display: flex;
+  position:absolute;
+  left: 5%;
+  bottom: 5%;
+  background-color: red;
+  height: 50px;
+  width: 90%;
+}
+
+.msgSuccess {
+  display: flex;
+  position:absolute;
+  left: 5%;
+  bottom: 5%;
+  background-color: green;
+  height: 50px;
+  width: 90%;
+}
+
+.exit {
+  display: flex;
+  position: absolute;
+  right: 0.5%;
+  top: 5%;
+}
+
+.msgText {
+  justify-content: center;
+  align-items: center;
+  display: flex;
+  padding:5px;
+  width: 90%;
+}
