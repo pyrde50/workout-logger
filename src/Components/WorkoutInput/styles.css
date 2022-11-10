@@ -35,8 +35,10 @@
 @media screen and (max-width: 500px) {
   .AddWorkoutBackgroundContainer {
     display: block;
-
     height: auto;
-    background-color: chocolate;
+  }
+
+  #AddWorkoutButtons {
+    padding-top: 10px;
   }
 }
