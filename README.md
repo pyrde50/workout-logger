@@ -74,5 +74,4 @@ TODO list
 - Add workout connect to backend
 - User button change colours to match design
 - pagination for past and history
-- buttons on side clickable all the way to the side not just on text
 - add workout alert to set as default
