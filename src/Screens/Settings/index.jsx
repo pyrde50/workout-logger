@@ -10,12 +10,15 @@ const lngs = {
 
 const Settings = () => {
   const picker = [
-    { id: 0, value: 'fi' },
-    { id: 1, value: 'en' },
+    { id: 'fi', value: 'fi' },
+    { id: 'en', value: 'en' },
   ];
 
   const changeLang = (_index, value) => {
-    i18n.changeLanguage(value);
+    const lang = picker.find((item) => item.id === value);
+    if (lang) {
+      i18n.changeLanguage(value);
+    }
   };
   const { t, i18n } = useTranslation();
   return (

@@ -75,5 +75,4 @@ TODO list
 - User button change colours to match design
 - pagination for past and history
 - buttons on side clickable all the way to the side not just on text
-- language settings broken'
 - add workout alert to set as default
