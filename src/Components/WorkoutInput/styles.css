@@ -1,0 +1,44 @@
+@media screen and (max-width: 900px) {
+  .AddWorkoutBackgroundContainer {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    grid-auto-flow: row dense;
+    height: auto;
+  }
+
+  .WorkoutInput {
+    width: 100%;
+  }
+
+  #AddWorkoutButtons {
+    grid-column: auto / span 2;
+  }
+
+  .WorkoutInput > div > form {
+    width: 85%;
+  }
+
+  .WorkoutInput > * {
+    width: 100%;
+    text-align: center;
+  }
+
+  #DatePickerContainer {
+    width: 85%;
+  }
+
+  #DatePickerContainer > * {
+    width: 100%;
+  }
+}
+
+@media screen and (max-width: 500px) {
+  .AddWorkoutBackgroundContainer {
+    display: block;
+    height: auto;
+  }
+
+  #AddWorkoutButtons {
+    padding-top: 10px;
+  }
+}
