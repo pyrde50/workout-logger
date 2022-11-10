@@ -7,15 +7,13 @@ old way alapuolella pitää keksiä parempi jossain kohtaa TODO :root {
 }
 
 .Container {
-  width: 100%;
-  height: 100%;
   background-color: #d6d6d6;
 }
 
 .Modal {
   display: flex;
   position: absolute;
-  top: 55px !important;
+  top: 52px !important;
   right: 0px !important;
   left: auto;
   bottom: auto;
@@ -38,27 +36,34 @@ old way alapuolella pitää keksiä parempi jossain kohtaa TODO :root {
 
 .TopBar {
   display: flex;
+  position: fixed;
   width: 100%;
   height: 50px;
-  border: 3px solid #000000;
+  border: 1px solid #000000;
   top: 0px;
   flex-direction: row;
   justify-content: space-between;
   font-size: xx-large;
   background-color: #ffffff;
+  z-index: 1;
 }
 
 .MainContainer {
+  position: relative;
+  top: 53px;
   display: flex;
   width: 100%;
-  height: 100%;
+  height: calc(100% + 53px);
   flex-direction: row;
+  background-color: #d6d6d6;
 }
 
 .SideNavigation {
+  position: fixed;
   width: 250px;
+  top: 51px;
   height: 100%;
-  border: 3px solid #000000;
+  border: 1px solid #000000;
   flex-direction: column;
   background-color: #ffffff;
 }
@@ -100,9 +105,17 @@ old way alapuolella pitää keksiä parempi jossain kohtaa TODO :root {
 }
 
 .DataContainer {
-  margin: 20px;
+  display: flex;
+  width: calc(100% - 290px);
+  left: 250px;
+  position: relative;
+  margin-left: 20px;
+}
+
+.DataContainerFull {
   display: flex;
   width: 100%;
+  position: relative;
 }
 
 .RightHeader {

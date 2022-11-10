@@ -112,7 +112,13 @@ const NavigationContainer = ({ children }) => {
             </div>
           </div>
         ) : null}
-        <div className="DataContainer">{children}</div>
+        <div
+          className={
+            sideNavigationVisible ? 'DataContainer' : 'DataContainerFull'
+          }
+        >
+          {children}
+        </div>
       </div>
       {msg?.type === 'Error' ? (
         <div className="msgError">
