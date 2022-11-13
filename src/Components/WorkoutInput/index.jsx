@@ -6,6 +6,7 @@ import { useTranslation } from 'react-i18next';
 import CancelIcon from '@mui/icons-material/Cancel';
 import { CustomDropdownPicker } from '..';
 import './styles.css';
+import { toJSON, addSession } from '../../services/workoutService';
 
 const WorkoutInput = ({ index, item, workouts, setLines, lines }) => {
   const { t } = useTranslation();
@@ -44,6 +45,16 @@ const WorkoutInput = ({ index, item, workouts, setLines, lines }) => {
     );
   };
 
+  // Submit the new workout
+  const submitWorkout = async () => {
+    // Filter empty lines + give in right JSON format
+    const data = toJSON(lines, workouts);
+
+    //Send the data to the server
+    const response = await addSession(data);
+    console.log(response);
+  };
+
   return (
     <div className="AddWorkoutBackgroundContainer" key={index}>
       <div className="WorkoutInput">
@@ -59,11 +70,6 @@ const WorkoutInput = ({ index, item, workouts, setLines, lines }) => {
           width="85%"
           index={index}
         />
-        {/*<CustomTextField
-              width={'85%'}
-              value={item.name}
-              onChange={(value) => changeData(index, { name: value })}
-      />*/}
       </div>
       <div className="WorkoutInput">
         <h4>{t('reps')}</h4>
@@ -85,7 +91,7 @@ const WorkoutInput = ({ index, item, workouts, setLines, lines }) => {
         <h4>{t('weight')}</h4>
         <div
           style={{
-            'flex-direction': 'row',
+            flexDirection: 'row',
             display: 'flex',
             justifyContent: 'center',
             alignItems: 'center',
@@ -113,7 +119,12 @@ const WorkoutInput = ({ index, item, workouts, setLines, lines }) => {
       ) : null}
       {index === lines.length - 1 ? (
         <div className="WorkoutInput" id="AddWorkoutButtons">
-          <Button text={t('submit')} width={'100%'} height={'40%'} />
+          <Button
+            text={t('submit')}
+            width={'100%'}
+            height={'40%'}
+            onClick={async () => await submitWorkout()}
+          />
           <div style={{ height: 10 }} />
           <Button
             text={t('addNewLine')}

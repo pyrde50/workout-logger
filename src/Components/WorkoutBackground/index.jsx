@@ -35,7 +35,7 @@ const WorkoutBackground = ({ data, defaultLarge }) => {
           <h4>{t('weight')}</h4>
           <div
             style={{
-              'flex-direction': 'row',
+              flexDirection: 'row',
               display: 'flex',
               justifyContent: 'center',
               alignItems: 'center',

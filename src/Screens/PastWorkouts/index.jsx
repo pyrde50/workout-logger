@@ -5,6 +5,7 @@ import { useTranslation } from 'react-i18next';
 import Loader from '../../Components/Loader';
 import { useDispatch } from 'react-redux';
 import { showMessage } from '../../reducers/msgReducer';
+import { getWorkouts } from '../../services/workoutService';
 
 const PastWorkouts = () => {
   const dispatch = useDispatch();
@@ -16,7 +17,7 @@ const PastWorkouts = () => {
     const fetch = async () => {
       try {
         setLoading(true);
-        const data = await get('workout_session/');
+        const data = await getWorkouts();
         console.log(data, 'vittu');
         setExercises(data);
       } catch (e) {

@@ -6,7 +6,7 @@ const get = async (url) => {
   const user = window.localStorage.getItem('user');
   const token = JSON.parse(user).token;
   const config = {
-    headers: { Authorization: `Bearer ${token}` },
+    headers: { Authorization: `bearer ${token}` },
   };
   const response = await axios.get(`${baseUrl}/${url}`, config);
   if (response.status > 300) {
