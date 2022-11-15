@@ -1,9 +1,6 @@
 import React, { useState, useEffect } from 'react';
-import {
-  NavigationContainer,
-  Button,
-  WorkoutBackground,
-} from '../../Components';
+import { NavigationContainer, Button } from '../../Components';
+import Session from '../../Components/Session';
 import './styles.css';
 import { get } from '../../api/helpers';
 import { useTranslation } from 'react-i18next';
@@ -14,7 +11,7 @@ import { showMessage } from '../../reducers/msgReducer';
 
 const Main = () => {
   const dispatch = useDispatch();
-  const [exercises, setExercises] = useState([]);
+  const [sessions, setSessions] = useState([]);
   const [loading, setLoading] = useState(false);
   const { t } = useTranslation();
 
@@ -23,7 +20,7 @@ const Main = () => {
       try {
         setLoading(true);
         const data = await get('workout_session/');
-        setExercises(data);
+        setSessions(data);
         setLoading(false);
       } catch (e) {
         console.log('Error: ', e);
@@ -59,9 +56,7 @@ const Main = () => {
         {loading ? (
           <Loader width={200} height={200} />
         ) : (
-          exercises.map((item, index) => (
-            <WorkoutBackground data={item} key={index} />
-          ))
+          sessions.map((item, index) => <Session key={index} data={item} />)
         )}
       </div>
     </NavigationContainer>

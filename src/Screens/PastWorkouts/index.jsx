@@ -6,11 +6,12 @@ import Loader from '../../Components/Loader';
 import { useDispatch } from 'react-redux';
 import { showMessage } from '../../reducers/msgReducer';
 import { getWorkouts } from '../../services/workoutService';
+import Session from '../../Components/Session';
 
 const PastWorkouts = () => {
   const dispatch = useDispatch();
   const [loading, setLoading] = useState(false);
-  const [exercises, setExercises] = useState([]);
+  const [sessions, setSessions] = useState([]);
   const { t } = useTranslation();
 
   useEffect(() => {
@@ -19,7 +20,7 @@ const PastWorkouts = () => {
         setLoading(true);
         const data = await getWorkouts();
         console.log(data, 'vittu');
-        setExercises(data);
+        setSessions(data);
       } catch (e) {
         console.log('Error: ', e);
         dispatch(
@@ -36,13 +37,13 @@ const PastWorkouts = () => {
   }, []);
   return (
     <NavigationContainer>
-      <div>
+      <div style={{ width: '100%' }}>
         <h1>{t('history')}</h1>
         {loading ? (
           <Loader width={200} height={200} />
         ) : (
-          exercises.map((item, index) => (
-            <WorkoutBackground data={item} key={index} defaultLarge={true} />
+          sessions.map((item, index) => (
+            <Session data={item} key={index} defaultLarge={true} />
           ))
         )}
       </div>
