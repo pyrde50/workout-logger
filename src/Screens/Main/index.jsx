@@ -20,7 +20,7 @@ const Main = () => {
       try {
         setLoading(true);
         const data = await get('workout_session/');
-        setSessions(data);
+        setSessions(data.sessions);
         setLoading(false);
       } catch (e) {
         console.log('Error: ', e);
@@ -36,6 +36,7 @@ const Main = () => {
     };
     fetch();
   }, []);
+  console.log(sessions, 'vittu');
   return (
     <NavigationContainer>
       <div className="Container">

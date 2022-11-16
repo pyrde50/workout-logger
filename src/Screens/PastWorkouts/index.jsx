@@ -19,8 +19,7 @@ const PastWorkouts = () => {
       try {
         setLoading(true);
         const data = await getWorkouts();
-        console.log(data, 'vittu');
-        setSessions(data);
+        setSessions(data.sessions);
       } catch (e) {
         console.log('Error: ', e);
         dispatch(
