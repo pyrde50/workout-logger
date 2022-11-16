@@ -3,7 +3,13 @@ import './styles.css';
 import { useTranslation } from 'react-i18next';
 import WorkoutInput from '../WorkoutInput';
 
-const NewWorkout = ({ lines, setLines, workouts }) => {
+const NewWorkout = ({
+  lines,
+  setLines,
+  workouts,
+  defaultWorkout,
+  readyWorkouts,
+}) => {
   const { t } = useTranslation();
 
   return (
@@ -17,6 +23,8 @@ const NewWorkout = ({ lines, setLines, workouts }) => {
           workouts={workouts}
           setLines={setLines}
           lines={lines}
+          defaultWorkout={defaultWorkout}
+          readyWorkouts={readyWorkouts}
         />
       ))}
     </div>
