@@ -71,7 +71,7 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/t
 
 TODO list
 
-- Add workout connect to backend
 - User button change colours to match design
 - pagination for past and history
 - add workout alert to set as default
+- add workout loading

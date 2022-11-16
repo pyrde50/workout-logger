@@ -14,18 +14,39 @@ import Modal from 'react-modal';
 import { logout } from '../../reducers/userReducer';
 import { useDispatch, useSelector } from 'react-redux';
 import { useTranslation } from 'react-i18next';
-import { hideMessage } from '../../reducers/msgReducer';
+import { hideMessage, showMessage } from '../../reducers/msgReducer';
 import CloseIcon from '@mui/icons-material/Close';
+import Button from '../Button';
+import { addDefaultSession } from '../../services/workoutService';
+import CustomTextField from '../TextField';
 
 const NavigationContainer = ({ children }) => {
   const user = useSelector((state) => state.user);
   const msg = useSelector((state) => state.msg.msg);
+  const [workoutName, setWorkoutName] = useState('');
+  const [showInput, setShowInput] = useState(false);
   const { t } = useTranslation();
   const dispatch = useDispatch();
   const { width } = useWindowDimensions();
   const [sideNavigationVisible, setSideNavigationVisible] = useState(true);
   const loggedIn = true; // TODO add login state
   const [isOpen, setIsOpen] = useState(false);
+  console.log(msg);
+
+  const addDefaultWorkout = async () => {
+    setShowInput(true);
+  };
+
+  const submitDefaultWorkout = async () => {
+    const exercises = msg.data.exercises.map((item) => item.id);
+    const data = { name: workoutName, exercises: exercises };
+    const res = await addDefaultSession(data);
+    if (res) {
+      dispatch(
+        showMessage({ type: 'Success', msg: 'Base workout add successful' }),
+      );
+    }
+  };
 
   useEffect(() => {
     if (width > 1200 && loggedIn) {
@@ -120,7 +141,25 @@ const NavigationContainer = ({ children }) => {
           {children}
         </div>
       </div>
-      {msg?.type === 'Error' ? (
+      {showInput ? (
+        <div className="msgSuccess">
+          <div className="exit" onClick={() => dispatch(hideMessage())}>
+            <CloseIcon />
+          </div>
+          <div className="msgButton">{'Enter workout name'}</div>
+          <CustomTextField
+            height={'80%'}
+            value={workoutName}
+            onChange={(value) => setWorkoutName(value)}
+          />
+          <Button
+            text={'Submit'}
+            width={'15%'}
+            height={'80%'}
+            onClick={() => submitDefaultWorkout()}
+          />
+        </div>
+      ) : msg?.type === 'Error' ? (
         <div className="msgError">
           <div className="exit" onClick={() => dispatch(hideMessage())}>
             <CloseIcon />
@@ -133,6 +172,19 @@ const NavigationContainer = ({ children }) => {
             <CloseIcon />
           </div>
           <div className="msgText">{msg.msg}</div>
+        </div>
+      ) : msg?.type === 'SuccessWithButton' ? (
+        <div className="msgSuccess">
+          <div className="exit" onClick={() => dispatch(hideMessage())}>
+            <CloseIcon />
+          </div>
+          <div className="msgButton">{msg.msg}</div>
+          <Button
+            text={'Add'}
+            width={'15%'}
+            height={'80%'}
+            onClick={() => addDefaultWorkout()}
+          />
         </div>
       ) : null}
     </div>

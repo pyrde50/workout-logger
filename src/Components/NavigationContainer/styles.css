@@ -144,6 +144,8 @@ old way alapuolella pitää keksiä parempi jossain kohtaa TODO :root {
   background-color: green;
   height: 50px;
   width: 90%;
+  justify-content: center;
+  align-items: center;
 }
 
 .exit {
@@ -159,4 +161,12 @@ old way alapuolella pitää keksiä parempi jossain kohtaa TODO :root {
   display: flex;
   padding: 5px;
   width: 90%;
+}
+
+.msgButton {
+  justify-content: center;
+  align-items: center;
+  display: flex;
+  padding: 5px;
+  width: 75%;
 }

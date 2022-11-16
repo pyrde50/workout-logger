@@ -10,10 +10,12 @@ import { useDispatch } from 'react-redux';
 import { showMessage } from '../../reducers/msgReducer';
 
 const AddWorkout = () => {
-  const dispatch = useDispatch();
-  const [lines, setLines] = useState([
+  const defaultWorkout = [
     { exercise: -1, reps: 0, amount: 0, weight: 0, date: moment() },
-  ]);
+  ];
+  const defaultReadyMadeWorkout = [];
+  const dispatch = useDispatch();
+  const [lines, setLines] = useState(defaultWorkout);
   const [readyLines, setReadyLines] = useState([]);
   const [readyWorkouts, setReadyWorkouts] = useState([]);
   const [workouts, setWorkouts] = useState([]);
@@ -47,7 +49,12 @@ const AddWorkout = () => {
   return (
     <NavigationContainer>
       <div className="AddWorkoutContainer">
-        <NewWorkout lines={lines} setLines={setLines} workouts={workouts} />
+        <NewWorkout
+          lines={lines}
+          setLines={setLines}
+          workouts={workouts}
+          defaultWorkout={defaultWorkout}
+        />
         {!loading ? (
           <ReadyMadeWorkouts
             lines={readyLines}
@@ -55,6 +62,7 @@ const AddWorkout = () => {
             workouts={workouts}
             readyWorkouts={readyWorkouts}
             excercise_names={workouts}
+            defaultReadyMadeWorkout={defaultReadyMadeWorkout}
           />
         ) : (
           <Loader width={200} height={200} />

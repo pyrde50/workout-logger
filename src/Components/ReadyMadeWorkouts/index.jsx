@@ -9,10 +9,10 @@ const ReadyMadeWorkouts = ({
   lines,
   setLines,
   readyWorkouts,
-  excercise_names,
+  defaultReadyMadeWorkout,
 }) => {
   const { t } = useTranslation();
-  const [workoutSelected, setWorkoutSelected] = useState(undefined);
+  const [workoutSelected, setWorkoutSelected] = useState('');
 
   const selectWorkoutPlan = (index, value) => {
     setWorkoutSelected(value);
@@ -50,6 +50,8 @@ const ReadyMadeWorkouts = ({
             workouts={workouts}
             setLines={setLines}
             lines={lines}
+            setWorkoutSelected={setWorkoutSelected}
+            defaultWorkout={defaultReadyMadeWorkout}
           />
         ))
       ) : (

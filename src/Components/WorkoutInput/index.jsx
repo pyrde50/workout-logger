@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import CustomTextField from '../TextField';
 import { Button } from '..';
 import DatePicker from '../DatePicker';
@@ -7,8 +7,21 @@ import CancelIcon from '@mui/icons-material/Cancel';
 import { CustomDropdownPicker } from '..';
 import './styles.css';
 import { toJSON, addSession } from '../../services/workoutService';
+import Loader from '../Loader';
+import { useDispatch } from 'react-redux';
+import { showMessage } from '../../reducers/msgReducer';
 
-const WorkoutInput = ({ index, item, workouts, setLines, lines }) => {
+const WorkoutInput = ({
+  index,
+  item,
+  workouts,
+  setLines,
+  lines,
+  setWorkoutSelected,
+  defaultWorkout,
+}) => {
+  const dispatch = useDispatch();
+  const [sendingReq, setSendingReq] = useState(false);
   const { t } = useTranslation();
 
   const changeData = (index, value) => {
@@ -47,12 +60,39 @@ const WorkoutInput = ({ index, item, workouts, setLines, lines }) => {
 
   // Submit the new workout
   const submitWorkout = async () => {
-    // Filter empty lines + give in right JSON format
-    const data = toJSON(lines, workouts);
+    try {
+      setSendingReq(true);
+      // Filter empty lines + give in right JSON format
+      const data = toJSON(lines, workouts);
 
-    //Send the data to the server
-    const response = await addSession(data);
-    console.log(response);
+      //Send the data to the server
+      const response = await addSession(data);
+      if (response) {
+        console.log(response);
+        if (setWorkoutSelected) {
+          setWorkoutSelected('');
+          dispatch(
+            showMessage({
+              msg: 'Uploading workout successful! Would you like to add this workout as a base workout?',
+              type: 'SuccessWithButton',
+              data: data,
+            }),
+          );
+        } else {
+          dispatch(
+            showMessage({
+              msg: 'Uploading workout successful!',
+              type: 'Success',
+            }),
+          );
+        }
+        setLines(defaultWorkout);
+      }
+    } catch (e) {
+      console.log('Error: ', e);
+    } finally {
+      setSendingReq(false);
+    }
   };
 
   return (
@@ -119,29 +159,59 @@ const WorkoutInput = ({ index, item, workouts, setLines, lines }) => {
       ) : null}
       {index === lines.length - 1 ? (
         <div className="WorkoutInput" id="AddWorkoutButtons">
-          <Button
-            text={t('submit')}
-            width={'100%'}
-            height={'40%'}
-            onClick={async () => await submitWorkout()}
-          />
+          {sendingReq ? (
+            <Button
+              text={<Loader />}
+              disabled={true}
+              width={'100%'}
+              height={'40%'}
+              onClick={async () => await submitWorkout()}
+            />
+          ) : (
+            <Button
+              text={t('submit')}
+              width={'100%'}
+              height={'40%'}
+              onClick={async () => await submitWorkout()}
+            />
+          )}
           <div style={{ height: 10 }} />
-          <Button
-            text={t('addNewLine')}
-            width={'100%'}
-            height={'40%'}
-            onClick={() =>
-              setLines(
-                lines.concat({
-                  exercise: '',
-                  reps: 0,
-                  amount: 0,
-                  weight: 0,
-                  date: new Date(),
-                }),
-              )
-            }
-          />
+          {sendingReq ? (
+            <Button
+              text={t('addNewLine')}
+              width={'100%'}
+              height={'40%'}
+              disabled={true}
+              onClick={() =>
+                setLines(
+                  lines.concat({
+                    exercise: '',
+                    reps: 0,
+                    amount: 0,
+                    weight: 0,
+                    date: new Date(),
+                  }),
+                )
+              }
+            />
+          ) : (
+            <Button
+              text={t('addNewLine')}
+              width={'100%'}
+              height={'40%'}
+              onClick={() =>
+                setLines(
+                  lines.concat({
+                    exercise: '',
+                    reps: 0,
+                    amount: 0,
+                    weight: 0,
+                    date: new Date(),
+                  }),
+                )
+              }
+            />
+          )}
         </div>
       ) : null}
       {index !== 0 ? (
