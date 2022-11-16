@@ -2,7 +2,14 @@ import * as React from 'react';
 import Box from '@mui/material/Box';
 import TextField from '@mui/material/TextField';
 
-const CustomTextField = ({ disabled, value, width, onChange }) => {
+const CustomTextField = ({
+  disabled,
+  value,
+  width,
+  height,
+  onChange,
+  backgroundColor,
+}) => {
   return (
     <Box
       component="form"
@@ -18,13 +25,14 @@ const CustomTextField = ({ disabled, value, width, onChange }) => {
           variant="outlined"
           disabled
           value={value}
-          style={{ width: width }}
+          style={{ width: width, backgroundColor: backgroundColor }}
         />
       ) : (
         <TextField
           id="outlined-basic"
           variant="outlined"
-          style={{ width: width }}
+          size={height === 'small' ? 'small' : undefined}
+          style={{ width: width, backgroundColor: backgroundColor }}
           value={value}
           onChange={() => onChange(event.target.value)}
         />

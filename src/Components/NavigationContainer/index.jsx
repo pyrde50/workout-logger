@@ -17,10 +17,15 @@ import { useTranslation } from 'react-i18next';
 import { hideMessage, showMessage } from '../../reducers/msgReducer';
 import CloseIcon from '@mui/icons-material/Close';
 import Button from '../Button';
-import { addDefaultSession } from '../../services/workoutService';
+import {
+  addDefaultSession,
+  editDefaultSession,
+} from '../../services/workoutService';
 import CustomTextField from '../TextField';
+import Loader from '../Loader';
 
 const NavigationContainer = ({ children }) => {
+  const [loading, setLoading] = useState(false);
   const user = useSelector((state) => state.user);
   const msg = useSelector((state) => state.msg.msg);
   const [workoutName, setWorkoutName] = useState('');
@@ -29,27 +34,48 @@ const NavigationContainer = ({ children }) => {
   const dispatch = useDispatch();
   const { width } = useWindowDimensions();
   const [sideNavigationVisible, setSideNavigationVisible] = useState(true);
-  const loggedIn = true; // TODO add login state
   const [isOpen, setIsOpen] = useState(false);
-  console.log(msg);
 
   const addDefaultWorkout = async () => {
     setShowInput(true);
   };
 
   const submitDefaultWorkout = async () => {
-    const exercises = msg.data.exercises.map((item) => item.id);
-    const data = { name: workoutName, exercises: exercises };
-    const res = await addDefaultSession(data);
-    if (res) {
+    try {
+      setLoading(true);
+      const exercises = msg.data.exercises.map((item) => item.id);
+      const data = { name: workoutName, exercises: exercises };
+      let res;
+      if (msg?.selected) {
+        const selected = msg.selected;
+        res = await editDefaultSession({ data, selected });
+      } else {
+        res = await addDefaultSession(data);
+      }
+      if (res) {
+        setShowInput(false);
+        dispatch(
+          showMessage({
+            type: 'Success',
+            msg: 'Base workout added successfully',
+          }),
+        );
+      }
+    } catch (e) {
+      console.log('Error: ', e);
       dispatch(
-        showMessage({ type: 'Success', msg: 'Base workout add successful' }),
+        showMessage({
+          type: 'Error',
+          msg: 'Base workout addition failed, please try again later!',
+        }),
       );
+    } finally {
+      setLoading(false);
     }
   };
 
   useEffect(() => {
-    if (width > 1200 && loggedIn) {
+    if (width > 1200) {
       setSideNavigationVisible(true);
     } else {
       setSideNavigationVisible(false);
@@ -148,12 +174,13 @@ const NavigationContainer = ({ children }) => {
           </div>
           <div className="msgButton">{'Enter workout name'}</div>
           <CustomTextField
-            height={'80%'}
+            height={'small'}
             value={workoutName}
             onChange={(value) => setWorkoutName(value)}
+            backgroundColor={'#FFFFFF'}
           />
           <Button
-            text={'Submit'}
+            text={loading ? <Loader width={25} height={25} /> : 'Submit'}
             width={'15%'}
             height={'80%'}
             onClick={() => submitDefaultWorkout()}

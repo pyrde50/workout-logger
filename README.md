@@ -73,5 +73,4 @@ TODO list
 
 - User button change colours to match design
 - pagination for past and history
-- add workout alert to set as default
-- add workout loading
+- translations for all messages

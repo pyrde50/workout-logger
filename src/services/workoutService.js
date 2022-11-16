@@ -76,6 +76,28 @@ export const addDefaultSession = async (data) => {
   }
 };
 
+export const editDefaultSession = async ({ data, selected }) => {
+  const user = window.localStorage.getItem('user');
+  const token = JSON.parse(user).token;
+  const config = {
+    headers: {
+      Authorization: `Bearer ${token}`,
+      'Content-Type': 'application/json',
+    },
+  };
+  const response = await axios.put(
+    `${baseUrl}/workouts/${selected}`,
+    data,
+    config,
+  );
+
+  if (response.status > 300) {
+    return;
+  } else {
+    return response.data;
+  }
+};
+
 export const getWorkouts = async () => {
   const user = window.localStorage.getItem('user');
   const token = JSON.parse(user).token;

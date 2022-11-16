@@ -50,8 +50,10 @@ const ReadyMadeWorkouts = ({
             workouts={workouts}
             setLines={setLines}
             lines={lines}
+            workoutSelected={workoutSelected}
             setWorkoutSelected={setWorkoutSelected}
             defaultWorkout={defaultReadyMadeWorkout}
+            readyWorkouts={readyWorkouts}
           />
         ))
       ) : (

@@ -19,6 +19,8 @@ const WorkoutInput = ({
   lines,
   setWorkoutSelected,
   defaultWorkout,
+  readyWorkouts,
+  workoutSelected,
 }) => {
   const dispatch = useDispatch();
   const [sendingReq, setSendingReq] = useState(false);
@@ -58,38 +60,78 @@ const WorkoutInput = ({
     );
   };
 
+  const compareArrays = (array1, array2) => {
+    if (array1.length !== array2.length) {
+      return false;
+    } else {
+      if (array1.map((item, index) => item === array2[index]).includes(false)) {
+        return false;
+      } else {
+        return true;
+      }
+    }
+  };
+
   // Submit the new workout
   const submitWorkout = async () => {
     try {
       setSendingReq(true);
       // Filter empty lines + give in right JSON format
       const data = toJSON(lines, workouts);
-
       //Send the data to the server
       const response = await addSession(data);
       if (response) {
-        console.log(response);
         if (setWorkoutSelected) {
           setWorkoutSelected('');
-          dispatch(
-            showMessage({
-              msg: 'Uploading workout successful! Would you like to add this workout as a base workout?',
-              type: 'SuccessWithButton',
-              data: data,
-            }),
-          );
+          const workouts = data.exercises.map((item) => item.id).sort();
+          const ready = readyWorkouts.map((item) => item.exercises.sort());
+          if (ready.find((item) => compareArrays(workouts, item))) {
+            dispatch(
+              showMessage({
+                msg: 'Uploading workout successful!',
+                type: 'Success',
+              }),
+            );
+          } else {
+            dispatch(
+              showMessage({
+                msg: 'Uploading workout successful! Would you like to edit the previous base to match this workout?',
+                type: 'SuccessWithButton',
+                data: data,
+                selected: workoutSelected,
+              }),
+            );
+          }
         } else {
-          dispatch(
-            showMessage({
-              msg: 'Uploading workout successful!',
-              type: 'Success',
-            }),
-          );
+          const workouts = data.exercises.map((item) => item.id).sort();
+          const ready = readyWorkouts.map((item) => item.exercises.sort());
+          if (ready.find((item) => compareArrays(workouts, item))) {
+            dispatch(
+              showMessage({
+                msg: 'Uploading workout successful!',
+                type: 'Success',
+              }),
+            );
+          } else {
+            dispatch(
+              showMessage({
+                msg: 'Uploading workout successful! Would you like to add this workout as a base workout?',
+                type: 'SuccessWithButton',
+                data: data,
+              }),
+            );
+          }
         }
         setLines(defaultWorkout);
       }
     } catch (e) {
       console.log('Error: ', e);
+      dispatch(
+        showMessage({
+          type: 'Error',
+          msg: 'Base workout addition failed, please try again later!',
+        }),
+      );
     } finally {
       setSendingReq(false);
     }
@@ -214,7 +256,7 @@ const WorkoutInput = ({
           )}
         </div>
       ) : null}
-      {index !== 0 ? (
+      {workoutSelected || index !== 0 ? (
         <div className="Delete">
           <CancelIcon
             className="Icon"

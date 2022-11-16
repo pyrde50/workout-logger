@@ -6,10 +6,11 @@ import { get } from '../../api/helpers';
 import ReadyMadeWorkouts from '../../Components/ReadyMadeWorkouts';
 import Loader from '../../Components/Loader';
 import './styles.css';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { showMessage } from '../../reducers/msgReducer';
 
 const AddWorkout = () => {
+  const msg = useSelector((state) => state.msg.msg);
   const defaultWorkout = [
     { exercise: -1, reps: 0, amount: 0, weight: 0, date: moment() },
   ];
@@ -45,7 +46,7 @@ const AddWorkout = () => {
       }
     };
     fetch();
-  }, []);
+  }, [msg?.data]);
   return (
     <NavigationContainer>
       <div className="AddWorkoutContainer">
@@ -54,6 +55,7 @@ const AddWorkout = () => {
           setLines={setLines}
           workouts={workouts}
           defaultWorkout={defaultWorkout}
+          readyWorkouts={readyWorkouts}
         />
         {!loading ? (
           <ReadyMadeWorkouts
