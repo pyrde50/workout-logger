@@ -12,7 +12,7 @@ import { showMessage } from '../../reducers/msgReducer';
 const AddWorkout = () => {
   const msg = useSelector((state) => state.msg.msg);
   const defaultWorkout = [
-    { exercise: -1, reps: 0, amount: 0, weight: 0, date: moment() },
+    { exercise: -1, reps: 0, sets: 0, weight: 0, date: moment() },
   ];
   const defaultReadyMadeWorkout = [];
   const dispatch = useDispatch();

@@ -165,8 +165,8 @@ const WorkoutInput = ({
         <h4>{t('sets')}</h4>
         <CustomTextField
           width={'85%'}
-          value={item.amount}
-          onChange={(value) => changeData(index, { amount: value })}
+          value={item.sets}
+          onChange={(value) => changeData(index, { sets: value })}
         />
       </div>
       <div className="WorkoutInput">
