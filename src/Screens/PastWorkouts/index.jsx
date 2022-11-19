@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { get } from '../../api/helpers';
-import { NavigationContainer, WorkoutBackground } from '../../Components';
+import { NavigationContainer } from '../../Components';
 import { useTranslation } from 'react-i18next';
 import Loader from '../../Components/Loader';
 import { useDispatch } from 'react-redux';
