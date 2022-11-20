@@ -6,6 +6,7 @@ import { useDispatch } from 'react-redux';
 import { showMessage } from '../../reducers/msgReducer';
 import { getWorkouts } from '../../services/workoutService';
 import Session from '../../Components/Session';
+import './styles.css';
 
 const PastWorkouts = () => {
   const dispatch = useDispatch();
@@ -36,7 +37,19 @@ const PastWorkouts = () => {
   return (
     <NavigationContainer>
       <div style={{ width: '100%' }}>
-        <h1>{t('history')}</h1>
+        <div className="HistoryHeader">
+          <h1>{t('history')}</h1>
+          {/*  <CustomDropdownPicker
+            items={[]}
+            setValue={() => null}
+            value={
+              "hello"
+            }
+            width="85%"
+            index={0}
+          />
+          <div></div> */}
+        </div>
         {loading ? (
           <Loader width={200} height={200} />
         ) : (
