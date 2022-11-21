@@ -8,6 +8,7 @@ import { NavLink } from 'react-router-dom';
 import Loader from '../../Components/Loader';
 import { useDispatch } from 'react-redux';
 import { showMessage } from '../../reducers/msgReducer';
+import { getWorkouts } from '../../services/workoutService';
 
 const Main = () => {
   const dispatch = useDispatch();
@@ -19,7 +20,7 @@ const Main = () => {
     const fetch = async () => {
       try {
         setLoading(true);
-        const data = await get('workout_session/');
+        const data = await getWorkouts();
         setSessions(data.sessions);
         setLoading(false);
       } catch (e) {
@@ -36,7 +37,7 @@ const Main = () => {
     };
     fetch();
   }, []);
-  console.log(sessions, 'vittu');
+
   return (
     <NavigationContainer>
       <div className="Container">
