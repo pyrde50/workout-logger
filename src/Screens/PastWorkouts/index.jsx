@@ -19,6 +19,7 @@ const PastWorkouts = () => {
   const filters = [
     { id: 'week', value: 'week' },
     { id: 'month', value: 'month' },
+    { id: 'last_month', value: 'last month' },
     { id: 'year', value: 'year' },
   ];
 
