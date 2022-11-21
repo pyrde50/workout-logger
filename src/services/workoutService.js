@@ -98,10 +98,11 @@ export const editDefaultSession = async ({ data, selected }) => {
   }
 };
 
-export const getWorkouts = async () => {
+export const getWorkouts = async (filter) => {
   const user = window.localStorage.getItem('user');
   const token = JSON.parse(user).token;
   const config = {
+    params: { date_range: filter },
     headers: {
       Authorization: `bearer ${token}`,
     },

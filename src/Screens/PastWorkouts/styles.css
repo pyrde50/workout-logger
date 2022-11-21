@@ -9,3 +9,14 @@
   grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
   padding-bottom: 2rem;
 }
+
+.DateFilterContainer {
+  display: flex;
+  flex-direction: row;
+}
+
+@media screen and (max-width: 500px) {
+  .DateFilterText {
+    display: none;
+  }
+}
