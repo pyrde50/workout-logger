@@ -15,7 +15,7 @@ const baseUrl = 'https://workout-logger-backend.onrender.com/api';
  */
 export const toJSON = (exercises, workouts) => {
   const exerciseList = [];
-  const date = exercises[0].date?._d.toJSON();
+  const date = exercises[0].date?._d?.toJSON();
 
   // Change the format
   for (let entry of exercises) {
@@ -98,7 +98,7 @@ export const editDefaultSession = async ({ data, selected }) => {
   }
 };
 
-export const getWorkouts = async (filter) => {
+export const getWorkouts = async (pageNumber, filter) => {
   const user = window.localStorage.getItem('user');
   const token = JSON.parse(user).token;
   const config = {
@@ -108,10 +108,18 @@ export const getWorkouts = async (filter) => {
     },
   };
 
-  const response = await axios.get(
-    'https://workout-logger-backend.onrender.com/api/workout_session',
-    config,
-  );
+  let response;
+  if (pageNumber) {
+    response = await axios.get(
+      `https://workout-logger-backend.onrender.com/api/workout_session/?page=${pageNumber}`,
+      config,
+    );
+  } else {
+    response = await axios.get(
+      'https://workout-logger-backend.onrender.com/api/workout_session',
+      config,
+    );
+  }
 
   return response.data;
 };

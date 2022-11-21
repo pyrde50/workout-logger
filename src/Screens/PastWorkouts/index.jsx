@@ -12,6 +12,8 @@ import './styles.css';
 const PastWorkouts = () => {
   const dispatch = useDispatch();
   const [loading, setLoading] = useState(false);
+  const [pages, setPages] = useState(0);
+  const [currentPage, setCurrentPage] = useState(0);
   const [sessions, setSessions] = useState([]);
   const [dateRange, setDateRange] = useState('');
   const { t } = useTranslation();
@@ -25,13 +27,16 @@ const PastWorkouts = () => {
 
   const setNewDateRange = (index, value) => {
     setDateRange(value);
+    setCurrentPage(0);
   };
 
   useEffect(() => {
     const fetch = async () => {
       try {
         setLoading(true);
-        const data = await getWorkouts(dateRange);
+        const data = await getWorkouts(currentPage, dateRange);
+        setPages(data.pages);
+        setCurrentPage(Number(data.page));
         setSessions(data.sessions);
       } catch (e) {
         console.log('Error: ', e);
@@ -46,12 +51,13 @@ const PastWorkouts = () => {
       }
     };
     fetch();
-  }, [dateRange]);
+  }, [dateRange, currentPage]);
+
   return (
     <NavigationContainer>
       <div style={{ width: '100%' }}>
         <div className="HistoryHeader">
-          <h1>{t('history')}</h1>
+          <h1>{t('latest')}</h1>
           {/* ADD LANGUAGE SUPPORT HERE */}
           <div className="DateFilterContainer">
             <h4 className="DateFilterText">Choose date</h4>
@@ -66,13 +72,46 @@ const PastWorkouts = () => {
           </div>
           <div></div>
         </div>
-        {loading ? (
-          <Loader width={200} height={200} />
-        ) : (
-          sessions.map((item, index) => (
-            <Session data={item} key={index} defaultLarge={true} />
-          ))
-        )}
+        <div>
+          {loading ? (
+            <Loader width={200} height={200} />
+          ) : (
+            <div>
+              {sessions.map((item, index) => (
+                <Session key={index} data={item} defaultLarge={true} />
+              ))}
+              <div
+                style={{
+                  display: 'flex',
+                  flexDirection: 'row',
+                  justifyContent: 'space-between',
+                  width: '80%',
+                  paddingLeft: 10,
+                }}
+              >
+                <h3
+                  onClick={() =>
+                    currentPage === 0
+                      ? setCurrentPage(pages - 1)
+                      : setCurrentPage(Number(currentPage) - 1)
+                  }
+                >
+                  Back
+                </h3>
+                <h3>Page {`${currentPage + 1}/${pages}`}</h3>
+                <h3
+                  onClick={() =>
+                    currentPage === pages - 1
+                      ? setCurrentPage(0)
+                      : setCurrentPage(Number(currentPage) + 1)
+                  }
+                >
+                  Forward
+                </h3>
+              </div>
+            </div>
+          )}
+        </div>
       </div>
     </NavigationContainer>
   );

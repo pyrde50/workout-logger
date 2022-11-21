@@ -10,6 +10,7 @@ import { toJSON, addSession } from '../../services/workoutService';
 import Loader from '../Loader';
 import { useDispatch } from 'react-redux';
 import { showMessage } from '../../reducers/msgReducer';
+import moment from 'moment';
 
 const WorkoutInput = ({
   index,
@@ -27,6 +28,7 @@ const WorkoutInput = ({
   const { t } = useTranslation();
 
   const changeData = (index, value) => {
+    console.log(index, value, 'vittu');
     const line = lines[index];
     const newLine = {
       ...line,
@@ -145,7 +147,9 @@ const WorkoutInput = ({
           items={workouts}
           setValue={changeDropdownValue}
           value={
-            item?.exercise < 0 || item.exercise === undefined
+            item?.exercise < 0 ||
+            item?.exercise === undefined ||
+            item?.exercise === ''
               ? ''
               : workouts.find((workout) => workout.id === item?.exercise)?.id
           }
@@ -194,7 +198,7 @@ const WorkoutInput = ({
           <div id="DatePickerContainer">
             <DatePicker
               value={item.date}
-              onChange={(value) => changeData(index, { date: value })}
+              onChange={(value) => changeData(index, { date: moment(value) })}
             />
           </div>
         </div>
@@ -229,7 +233,7 @@ const WorkoutInput = ({
                   lines.concat({
                     exercise: '',
                     reps: 0,
-                    amount: 0,
+                    sets: 0,
                     weight: 0,
                     date: new Date(),
                   }),
@@ -246,7 +250,7 @@ const WorkoutInput = ({
                   lines.concat({
                     exercise: '',
                     reps: 0,
-                    amount: 0,
+                    sets: 0,
                     weight: 0,
                     date: new Date(),
                   }),
