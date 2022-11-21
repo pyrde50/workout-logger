@@ -43,7 +43,7 @@
     "execute-husky": "npx husky install && npx husky add .husky/pre-commit \"npx --no-install lint-staged\"",
     "lint": "eslint --ext \".js,.vue\" --ignore-path .gitignore .",
     "lint-fix": "npm run lint -- --fix",
-    "homepage": "https://pyrde50.github.io/workoutlogger/"
+    "homepage": "https://pyrde50.github.io/workout-logger/"
   },
   "eslintConfig": {
     "extends": [
