@@ -78,7 +78,7 @@ const PastWorkouts = () => {
           ) : (
             <div>
               {sessions.map((item, index) => (
-                <Session key={index} data={item} />
+                <Session key={index} data={item} defaultLarge={true} />
               ))}
               <div
                 style={{
@@ -92,7 +92,7 @@ const PastWorkouts = () => {
                 <h3
                   onClick={() =>
                     currentPage === 0
-                      ? setCurrentPage(pages.length)
+                      ? setCurrentPage(pages - 1)
                       : setCurrentPage(Number(currentPage) - 1)
                   }
                 >
