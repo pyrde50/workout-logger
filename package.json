@@ -35,7 +35,7 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "predeploy": "npm run build",
-    "deploy": "gh-pages -d build",
+    "deploy": "gh-pages -b main -d build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "eslint": "npx eslint --fix .",
@@ -43,7 +43,7 @@
     "execute-husky": "npx husky install && npx husky add .husky/pre-commit \"npx --no-install lint-staged\"",
     "lint": "eslint --ext \".js,.vue\" --ignore-path .gitignore .",
     "lint-fix": "npm run lint -- --fix",
-    "homepage": "https://pyrde50.github.io/workout-logger/"
+    "homepage": "."
   },
   "eslintConfig": {
     "extends": [
