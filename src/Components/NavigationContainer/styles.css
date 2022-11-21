@@ -131,9 +131,12 @@ old way alapuolella pitää keksiä parempi jossain kohtaa TODO :root {
   position: absolute;
   left: 5%;
   bottom: 5%;
-  background-color: red;
+  border-radius: 10px;
+  background-color: rgb(238, 45, 45);
   height: 50px;
   width: 90%;
+  justify-content: center;
+  align-items: center;
 }
 
 .msgSuccess {
@@ -141,7 +144,8 @@ old way alapuolella pitää keksiä parempi jossain kohtaa TODO :root {
   position: absolute;
   left: 5%;
   bottom: 5%;
-  background-color: green;
+  border-radius: 10px;
+  background-color: rgb(43, 210, 43);
   height: 50px;
   width: 90%;
   justify-content: center;
