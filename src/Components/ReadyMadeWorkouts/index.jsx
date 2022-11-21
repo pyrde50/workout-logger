@@ -28,7 +28,7 @@ const ReadyMadeWorkouts = ({
             return {
               exercise: item,
               reps: 0,
-              amount: 0,
+              sets: 0,
               weight: 0,
               date: moment(),
             };

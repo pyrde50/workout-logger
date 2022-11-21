@@ -78,6 +78,7 @@ const WorkoutInput = ({
       setSendingReq(true);
       // Filter empty lines + give in right JSON format
       const data = toJSON(lines, workouts);
+      console.log(data, 'vittu');
       //Send the data to the server
       const response = await addSession(data);
       if (response) {
@@ -229,7 +230,7 @@ const WorkoutInput = ({
                   lines.concat({
                     exercise: '',
                     reps: 0,
-                    amount: 0,
+                    sets: 0,
                     weight: 0,
                     date: new Date(),
                   }),
@@ -246,7 +247,7 @@ const WorkoutInput = ({
                   lines.concat({
                     exercise: '',
                     reps: 0,
-                    amount: 0,
+                    sets: 0,
                     weight: 0,
                     date: new Date(),
                   }),
