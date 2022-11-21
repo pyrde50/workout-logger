@@ -98,7 +98,7 @@ export const editDefaultSession = async ({ data, selected }) => {
   }
 };
 
-export const getWorkouts = async (filter, pageNumber) => {
+export const getWorkouts = async (pageNumber, filter) => {
   const user = window.localStorage.getItem('user');
   const token = JSON.parse(user).token;
   const config = {

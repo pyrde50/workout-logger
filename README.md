@@ -72,6 +72,5 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/t
 TODO list
 
 - translations for all messages
-- fix filter and page issue
 - fix full screen style in session
 - fix datepicker add session

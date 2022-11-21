@@ -20,7 +20,7 @@ const Main = () => {
     const fetch = async () => {
       try {
         setLoading(true);
-        const data = await getWorkouts();
+        const data = await getWorkouts(0, 'week');
         setSessions(data.sessions);
         setLoading(false);
       } catch (e) {
@@ -54,7 +54,7 @@ const Main = () => {
             color={'#70C3FF'}
           />
         </NavLink>
-        <h1>{t('history')}</h1>
+        <h1>{t('latest')}</h1>
         {loading ? (
           <Loader width={200} height={200} />
         ) : (

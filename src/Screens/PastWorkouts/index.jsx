@@ -27,13 +27,14 @@ const PastWorkouts = () => {
 
   const setNewDateRange = (index, value) => {
     setDateRange(value);
+    setCurrentPage(0);
   };
 
   useEffect(() => {
     const fetch = async () => {
       try {
         setLoading(true);
-        const data = await getWorkouts(currentPage);
+        const data = await getWorkouts(currentPage, dateRange);
         setPages(data.pages);
         setCurrentPage(Number(data.page));
         setSessions(data.sessions);
@@ -56,7 +57,7 @@ const PastWorkouts = () => {
     <NavigationContainer>
       <div style={{ width: '100%' }}>
         <div className="HistoryHeader">
-          <h1>{t('history')}</h1>
+          <h1>{t('latest')}</h1>
           {/* ADD LANGUAGE SUPPORT HERE */}
           <div className="DateFilterContainer">
             <h4 className="DateFilterText">Choose date</h4>
