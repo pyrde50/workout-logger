@@ -72,6 +72,4 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/t
 TODO list
 
 - translations for all messages
-- fix full screen style in session
-- fix back to end past workouts
 
