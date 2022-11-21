@@ -73,4 +73,5 @@ TODO list
 
 - translations for all messages
 - fix full screen style in session
-- fix datepicker add session
+- fix back to end past workouts
+

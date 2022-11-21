@@ -15,7 +15,7 @@ const baseUrl = 'https://workout-logger-backend.onrender.com/api';
  */
 export const toJSON = (exercises, workouts) => {
   const exerciseList = [];
-  const date = exercises[0].date?._d.toJSON();
+  const date = exercises[0].date?._d?.toJSON();
 
   // Change the format
   for (let entry of exercises) {
