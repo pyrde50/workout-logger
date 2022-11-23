@@ -1,8 +1,9 @@
 import React from 'react';
 import CustomTextField from '../TextField';
 import './styles.css';
-
+import { useTranslation } from 'react-i18next';
 const ExerciseEntry = ({ data }) => {
+  const { t } = useTranslation();
   // All parameters that not needed to show
 
   const ignoreList = ['id', '_id', '__v'];
@@ -16,7 +17,7 @@ const ExerciseEntry = ({ data }) => {
         if (!ignoreList.includes(key)) {
           return (
             <div key={key} className="ExerciseInputEntry">
-              <h4 className="InputHeader">{key}</h4>
+              <h4 className="InputHeader">{t(key)}</h4>
               <CustomTextField disabled={true} value={value} width={'85%'} />
             </div>
           );

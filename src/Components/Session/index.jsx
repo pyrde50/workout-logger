@@ -1,8 +1,10 @@
 import React, { useState } from 'react';
 import './styles.css';
 import ExerciseEntry from '../ExerciseEntry';
+import { useTranslation } from 'react-i18next';
 
 const Session = ({ data, defaultLarge }) => {
+  const { t } = useTranslation();
   const [showLarge, setShowLarge] = useState(defaultLarge ? true : false);
   const date = new Date(data.date);
   const dateString = [
@@ -18,7 +20,7 @@ const Session = ({ data, defaultLarge }) => {
         onClick={() => (defaultLarge ? null : setShowLarge(false))}
       >
         <div className="SessionContainerHeader">
-          <h4>Workout</h4>
+          <h4>{t('workout')}</h4>
           <h4>{dateString}</h4>
         </div>
 
@@ -30,7 +32,7 @@ const Session = ({ data, defaultLarge }) => {
   } else {
     return (
       <div className="SessionContainerSmall" onClick={() => setShowLarge(true)}>
-        <h4 className="SessionHeader">Workout</h4>
+        <h4 className="SessionHeader">{t('workout')}</h4>
         <h4>{dateString}</h4>
       </div>
     );

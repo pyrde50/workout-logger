@@ -27,7 +27,7 @@ const Main = () => {
         console.log('Error: ', e);
         dispatch(
           showMessage({
-            msg: 'Failed to load data from server. Please try again later.',
+            msg: t('loadError'),
             type: 'Error',
           }),
         );

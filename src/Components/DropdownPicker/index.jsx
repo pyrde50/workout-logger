@@ -2,6 +2,7 @@ import * as React from 'react';
 import Box from '@mui/material/Box';
 import MenuItem from '@mui/material/MenuItem';
 import Select from '@mui/material/Select';
+import { useTranslation } from 'react-i18next';
 
 const CustomDropdownPicker = ({
   value,
@@ -11,6 +12,8 @@ const CustomDropdownPicker = ({
   backgroundColor,
   width,
 }) => {
+  const { t } = useTranslation();
+
   return (
     <Box
       component="form"
@@ -30,7 +33,7 @@ const CustomDropdownPicker = ({
       >
         {items.map((item) => (
           <MenuItem value={item.id} key={item.id}>
-            {item.value}
+            {t(item.value)}
           </MenuItem>
         ))}
       </Select>

@@ -24,6 +24,7 @@ import {
 import CustomTextField from '../TextField';
 import Loader from '../Loader';
 
+
 const NavigationContainer = ({ children }) => {
   const [loading, setLoading] = useState(false);
   const user = useSelector((state) => state.user);
@@ -57,7 +58,7 @@ const NavigationContainer = ({ children }) => {
         dispatch(
           showMessage({
             type: 'Success',
-            msg: 'Base workout added successfully',
+            msg: `${t('BaseSaveSuccess')}`,
           }),
         );
       }
@@ -66,7 +67,7 @@ const NavigationContainer = ({ children }) => {
       dispatch(
         showMessage({
           type: 'Error',
-          msg: 'Base workout addition failed, please try again later!',
+          msg: `${t('BaseSaveError')}`,
         }),
       );
     } finally {
@@ -172,7 +173,7 @@ const NavigationContainer = ({ children }) => {
           <div className="exit" onClick={() => dispatch(hideMessage())}>
             <CloseIcon />
           </div>
-          <div className="msgButton">{'Enter workout name'}</div>
+          <div className="msgButton">{t('EnterWorkoutName')}</div>
           <CustomTextField
             height={'small'}
             value={workoutName}

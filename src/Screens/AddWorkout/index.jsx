@@ -8,8 +8,10 @@ import Loader from '../../Components/Loader';
 import './styles.css';
 import { useDispatch, useSelector } from 'react-redux';
 import { showMessage } from '../../reducers/msgReducer';
+import { useTranslation } from 'react-i18next';
 
 const AddWorkout = () => {
+  const { t } = useTranslation();
   const msg = useSelector((state) => state.msg.msg);
   const defaultWorkout = [
     { exercise: -1, reps: 0, sets: 0, weight: 0, date: moment() },
@@ -37,7 +39,7 @@ const AddWorkout = () => {
         console.log('Error: ', e);
         dispatch(
           showMessage({
-            msg: 'Failed to load data from server. Please try again later.',
+            msg: t('loadError'),
             type: 'Error',
           }),
         );

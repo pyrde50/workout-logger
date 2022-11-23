@@ -90,14 +90,14 @@ const WorkoutInput = ({
           if (ready.find((item) => compareArrays(workouts, item))) {
             dispatch(
               showMessage({
-                msg: 'Uploading workout successful!',
+                msg: `${t('workoutUploadSuccess')}`,
                 type: 'Success',
               }),
             );
           } else {
             dispatch(
               showMessage({
-                msg: 'Uploading workout successful! Would you like to edit the previous base to match this workout?',
+                msg: `${t('editWorkoutBase')}`,
                 type: 'SuccessWithButton',
                 data: data,
                 selected: workoutSelected,
@@ -110,14 +110,14 @@ const WorkoutInput = ({
           if (ready.find((item) => compareArrays(workouts, item))) {
             dispatch(
               showMessage({
-                msg: 'Uploading workout successful!',
+                msg: `${t('workoutUploadSuccess')}`,
                 type: 'Success',
               }),
             );
           } else {
             dispatch(
               showMessage({
-                msg: 'Uploading workout successful! Would you like to add this workout as a base workout?',
+                msg: `${t('addNewWorkoutBase')}`,
                 type: 'SuccessWithButton',
                 data: data,
               }),
@@ -131,7 +131,7 @@ const WorkoutInput = ({
       dispatch(
         showMessage({
           type: 'Error',
-          msg: 'Base workout addition failed, please try again later!',
+          msg: `${t('baseSaveError')}`,
         }),
       );
     } finally {

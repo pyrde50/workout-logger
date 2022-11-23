@@ -1,7 +1,10 @@
 import * as React from 'react';
 import Button from '@mui/material/Button';
+import { useTranslation } from 'react-i18next';
 
 const CustomButton = ({ width, text, height, onClick, color, disabled }) => {
+  const { t } = useTranslation();
+
   return (
     <Button
       onClick={onClick}
@@ -9,7 +12,7 @@ const CustomButton = ({ width, text, height, onClick, color, disabled }) => {
       variant="contained"
       style={{ width: width, height: height, backgroundColor: color }}
     >
-      {text}
+      {t(text)}
     </Button>
   );
 };

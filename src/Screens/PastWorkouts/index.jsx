@@ -42,7 +42,7 @@ const PastWorkouts = () => {
         console.log('Error: ', e);
         dispatch(
           showMessage({
-            msg: 'Failed to load data from server. Please try again later.',
+            msg: t('loadError'),
             type: 'Error',
           }),
         );
@@ -60,7 +60,7 @@ const PastWorkouts = () => {
           <h1>{t('latest')}</h1>
           {/* ADD LANGUAGE SUPPORT HERE */}
           <div className="DateFilterContainer">
-            <h4 className="DateFilterText">Choose date</h4>
+            <h4 className="DateFilterText">{t('ChooseDate')}</h4>
             <CustomDropdownPicker
               items={filters}
               setValue={setNewDateRange}
@@ -96,9 +96,9 @@ const PastWorkouts = () => {
                       : setCurrentPage(Number(currentPage) - 1)
                   }
                 >
-                  Back
+                  {t('Back')}
                 </h3>
-                <h3>Page {`${currentPage + 1}/${pages}`}</h3>
+                <h3>{t('Page')} {`${currentPage + 1}/${pages}`}</h3>
                 <h3
                   onClick={() =>
                     currentPage === pages - 1
@@ -106,7 +106,7 @@ const PastWorkouts = () => {
                       : setCurrentPage(Number(currentPage) + 1)
                   }
                 >
-                  Forward
+                  {t('Forward')}
                 </h3>
               </div>
             </div>
